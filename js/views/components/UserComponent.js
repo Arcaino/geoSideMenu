@@ -84,9 +84,14 @@ class UserComponent extends HTMLElement{
         return userComponent;
     }
 
-    collapseUser(){
+    collapse(){
 
-        console.log('oioi');
+        
+    }
+
+    expand(){
+
+        
     }
     
 }

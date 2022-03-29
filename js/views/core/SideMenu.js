@@ -17,7 +17,8 @@ class SideMenu extends HTMLElement{
 
         const shadow = this.attachShadow({ mode: 'open' });
         shadow.appendChild(this.#style());
-        shadow.appendChild(this.#html());        
+        shadow.appendChild(this.#html());   
+        this.#collapseOrExpandSideMenu();     
     }
 
     #style(){
@@ -50,36 +51,44 @@ class SideMenu extends HTMLElement{
         this.#sideMenu.classList.add('sideMenu');
 
         this.#sideMenu.appendChild(this.#headerComponent = new HeaderComponent());
-        this.#sideMenu.appendChild(this.#userComponent = new UserComponent());
-
-        this.#collapseSideMenu();
+        this.#sideMenu.appendChild(this.#userComponent = new UserComponent());        
 
         return this.#sideMenu;
     }
 
-    #collapseSideMenu(){
+    #collapseOrExpandSideMenu(){
 
         const headerElement = {
 
             geoLogoLink: this.#headerComponent.shadow.querySelector('.headerComponent a'),
             geoLogo: this.#headerComponent.shadow.querySelector('.headerComponent__geoLogo'),
             collapseButton: this.#headerComponent.shadow.querySelector('.headerComponent__collapse'),
-            sideMenu: this.#headerComponent.shadow.getRootNode().host.parentElement
         }
+        const sideMenu = this.#headerComponent.shadow.getRootNode().host.parentElement;
 
         headerElement.collapseButton.addEventListener("click", () => {
 
-            if(!this.#isCollapsed(headerElement.sideMenu)){
+            if(this.#isCollapsed(sideMenu)){
 
-                headerElement.sideMenu.classList.add('sideMenuCollapsed');
-                this.#headerComponent.styledHeaderCollapsed(headerElement);
+                this.#expand(sideMenu, headerElement);
             }else{
 
-                headerElement.sideMenu.classList.remove('sideMenuCollapsed');
-                this.#headerComponent.styleHeaderExpanded(headerElement);
+                this.#collapse(sideMenu, headerElement);
             }
 
         });
+    }
+
+    #expand(sideMenu, headerElement){
+
+        sideMenu.classList.remove('sideMenuCollapsed');
+        this.#headerComponent.expand(headerElement);
+    }
+
+    #collapse(sideMenu, headerElement){
+
+        sideMenu.classList.add('sideMenuCollapsed');
+        this.#headerComponent.collapse(headerElement);
     }
 
     #isCollapsed(sidemenu){

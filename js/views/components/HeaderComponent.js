@@ -70,7 +70,7 @@ class HeaderComponent extends HTMLElement{
         return headerComponent;
     }
 
-    styledHeaderCollapsed(headerElement){
+    collapse(headerElement){
 
         headerElement.collapseButton.style.transform = "rotate(180deg)";
         headerElement.collapseButton.style.transition = "all .5s"
@@ -80,7 +80,7 @@ class HeaderComponent extends HTMLElement{
         headerElement.geoLogo.style.opacity = "0";
     }
 
-    styleHeaderExpanded(headerElement){
+    expand(headerElement){
         
         headerElement.collapseButton.style.transform = "rotate(0deg)";
         headerElement.collapseButton.style.transition = "all .5s";  
