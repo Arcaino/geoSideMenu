@@ -1,10 +1,12 @@
 import themeColors from '../../utils/themeColors.js';
 import HeaderComponent from '../components/HeaderComponent.js';
+import UserComponent from '../components/UserComponent.js';
 
 class SideMenu extends HTMLElement{
 
     #headerComponent;
     #sideMenu;
+    #userComponent;
 
     constructor(){
         super();
@@ -46,7 +48,9 @@ class SideMenu extends HTMLElement{
 
         this.#sideMenu = document.createElement('div');
         this.#sideMenu.classList.add('sideMenu');
+
         this.#sideMenu.appendChild(this.#headerComponent = new HeaderComponent());
+        this.#sideMenu.appendChild(this.#userComponent = new UserComponent());
 
         this.#collapseSideMenu();
 
@@ -55,7 +59,32 @@ class SideMenu extends HTMLElement{
 
     #collapseSideMenu(){
 
-        this.#headerComponent.collapseMenu();
+        const headerElement = {
+
+            geoLogoLink: this.#headerComponent.shadow.querySelector('.headerComponent a'),
+            geoLogo: this.#headerComponent.shadow.querySelector('.headerComponent__geoLogo'),
+            collapseButton: this.#headerComponent.shadow.querySelector('.headerComponent__collapse'),
+            sideMenu: this.#headerComponent.shadow.getRootNode().host.parentElement
+        }
+
+        headerElement.collapseButton.addEventListener("click", () => {
+
+            if(!this.#isCollapsed(headerElement.sideMenu)){
+
+                headerElement.sideMenu.classList.add('sideMenuCollapsed');
+                this.#headerComponent.styledHeaderCollapsed(headerElement);
+            }else{
+
+                headerElement.sideMenu.classList.remove('sideMenuCollapsed');
+                this.#headerComponent.styleHeaderExpanded(headerElement);
+            }
+
+        });
+    }
+
+    #isCollapsed(sidemenu){
+
+        return sidemenu.classList.contains('sideMenuCollapsed');
     }
 }
 

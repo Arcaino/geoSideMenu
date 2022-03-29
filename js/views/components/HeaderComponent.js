@@ -1,7 +1,5 @@
 class HeaderComponent extends HTMLElement{
 
-    #shadow;
-
     constructor(){
         super();
         this.#render();
@@ -9,9 +7,9 @@ class HeaderComponent extends HTMLElement{
 
     #render(){
 
-        this.#shadow = this.attachShadow({ mode: 'open' });
-        this.#shadow.appendChild(this.#style());
-        this.#shadow.appendChild(this.#html());
+        this.shadow = this.attachShadow({ mode: 'open' });
+        this.shadow.appendChild(this.#style());
+        this.shadow.appendChild(this.#html());
     }
 
     #style(){
@@ -23,15 +21,13 @@ class HeaderComponent extends HTMLElement{
             
             .headerComponent{
 
-                height: 4rem;
-                width: 100%;
+                padding: 1rem;
                 display: flex;
                 justify-content: space-between;
             }
 
             .headerComponent > *{
 
-                margin: auto 1rem;
                 cursor: pointer;
             }
 
@@ -45,14 +41,13 @@ class HeaderComponent extends HTMLElement{
                 transition: opacity 2s ease 0s;
                 opacity: 1;
                 width: unset;
-                margin: auto 1rem;
+                
             }
 
             .headerComponent a{
 
                 width: 35px;
                 height: 29px;
-                margin: auto 0px;
             }
         `;
 
@@ -75,33 +70,7 @@ class HeaderComponent extends HTMLElement{
         return headerComponent;
     }
 
-    collapseMenu(){
-
-        const headerElement = {
-
-            geoLogoLink: this.#shadow.querySelector('.headerComponent a'),
-            geoLogo: this.#shadow.querySelector('.headerComponent__geoLogo'),
-            collapseButton: this.#shadow.querySelector('.headerComponent__collapse')
-        }
-
-        const sideMenu = this.#shadow.getRootNode().host.parentElement;
-
-        headerElement.collapseButton.addEventListener("click", () => {
-
-            if(!sideMenu.classList.contains('sideMenuCollapsed')){
-
-                sideMenu.classList.add('sideMenuCollapsed');
-                this.#styledHeaderCollapsed(headerElement);
-            }else{
-
-                sideMenu.classList.remove('sideMenuCollapsed');
-                this.#styleHeaderExpanded(headerElement);
-            }
-
-        });
-    }
-
-    #styledHeaderCollapsed(headerElement){
+    styledHeaderCollapsed(headerElement){
 
         headerElement.collapseButton.style.transform = "rotate(180deg)";
         headerElement.collapseButton.style.transition = "all .5s"
@@ -111,7 +80,7 @@ class HeaderComponent extends HTMLElement{
         headerElement.geoLogo.style.opacity = "0";
     }
 
-    #styleHeaderExpanded(headerElement){
+    styleHeaderExpanded(headerElement){
         
         headerElement.collapseButton.style.transform = "rotate(0deg)";
         headerElement.collapseButton.style.transition = "all .5s";  
