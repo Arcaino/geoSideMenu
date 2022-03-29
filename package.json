@@ -8,6 +8,11 @@
     "prepare": "husky install",
     "commit": "cz"
   },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Arcaino/geoSideMenu.git"

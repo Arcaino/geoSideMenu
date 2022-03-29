@@ -1,6 +1,10 @@
 import themeColors from '../../utils/themeColors.js';
+import HeaderComponent from '../components/HeaderComponent.js';
 
 class SideMenu extends HTMLElement{
+
+    #headerComponent;
+    #sideMenu;
 
     constructor(){
         super();
@@ -11,7 +15,7 @@ class SideMenu extends HTMLElement{
 
         const shadow = this.attachShadow({ mode: 'open' });
         shadow.appendChild(this.#style());
-        shadow.appendChild(this.#html());
+        shadow.appendChild(this.#html());        
     }
 
     #style(){
@@ -25,6 +29,13 @@ class SideMenu extends HTMLElement{
                 height: 100%;
                 background-color: ${themeColors.primaryColor};
                 box-shadow: 3px 0px 4px rgba(0, 0, 0, 0.25);
+                transition: width .5s; 
+            }
+
+            .sideMenuCollapsed{
+
+                width: 4rem;
+                transition: width .5s;  
             }
         `;
 
@@ -33,11 +44,18 @@ class SideMenu extends HTMLElement{
 
     #html(){
 
-        const sideMenu = document.createElement('div');
-        sideMenu.classList.add('sideMenu');
+        this.#sideMenu = document.createElement('div');
+        this.#sideMenu.classList.add('sideMenu');
+        this.#sideMenu.appendChild(this.#headerComponent = new HeaderComponent());
 
+        this.#collapseSideMenu();
 
-        return sideMenu;
+        return this.#sideMenu;
+    }
+
+    #collapseSideMenu(){
+
+        this.#headerComponent.collapseMenu();
     }
 }
 
