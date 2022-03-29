@@ -1,0 +1,29 @@
+{
+  "name": "menu-lateral",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install",
+    "commit": "cz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arcaino/geoSideMenu.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Arcaino/geoSideMenu/issues"
+  },
+  "homepage": "https://github.com/Arcaino/geoSideMenu#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^16.2.3",
+    "@commitlint/config-conventional": "^16.2.1"
+  },
+  "dependencies": {
+    "husky": "^7.0.4"
+  }
+}
