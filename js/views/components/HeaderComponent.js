@@ -21,9 +21,10 @@ class HeaderComponent extends HTMLElement{
             
             .headerComponent{
 
-                padding: 1rem;
+                margin: 0rem 0 1.5rem 0;
                 display: flex;
                 justify-content: space-between;
+                align-items: center;
             }
 
             .headerComponent > *{
@@ -38,7 +39,7 @@ class HeaderComponent extends HTMLElement{
 
             .headerComponent__geoLogo{
                 
-                transition: opacity 2s ease 0s;
+                transition: opacity ease .5s;
                 opacity: 1;
                 width: unset;
                 
@@ -72,22 +73,20 @@ class HeaderComponent extends HTMLElement{
 
     collapse(headerElement){
 
-        headerElement.collapseButton.style.transform = "rotate(180deg)";
+        headerElement.collapseButton.style.transform = "translate(-50%, 0) rotate(180deg)";
         headerElement.collapseButton.style.transition = "all .5s"
 
         headerElement.geoLogoLink.style.width = "0";
-        headerElement.geoLogo.style.transition = "opacity .5s";  
         headerElement.geoLogo.style.opacity = "0";
     }
 
     expand(headerElement){
         
-        headerElement.collapseButton.style.transform = "rotate(0deg)";
+        headerElement.collapseButton.style.transform = "translate(-50%, 0) rotate(0deg)";
         headerElement.collapseButton.style.transition = "all .5s";  
 
-        headerElement.geoLogo.style.transition = "opacity 2s";  
+        headerElement.geoLogoLink.style.width = "35px";
         headerElement.geoLogo.style.opacity = "1";
-        headerElement.geoLogo.style.width = "unset";
     }
 }
 

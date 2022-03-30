@@ -2,6 +2,8 @@ import themeColors from "../../utils/themeColors.js";
 
 class UserComponent extends HTMLElement{
 
+    #userElements;
+
     constructor(){
         super();
         this.#render();
@@ -26,22 +28,29 @@ class UserComponent extends HTMLElement{
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                padding: .5rem 1rem;
+                margin: 1.5rem 0rem;
+                overflow: hidden;
+                transform: translate(0px, 0px);
+                transition: transform .3s;
             }
 
             .userComponent__logout{
 
                 font-size: 1.5rem;
+                transition: font-size .3s;
                 color: ${themeColors.secundaryColor}
             }
             
             .userComponent__image{
 
                 border-radius: 50%;
+                transition: transform .3s, -webkit-transform .3s;
             }
 
             .userComponent__info{
 
+                white-space: nowrap;
+                transition: opacity .5s ease;
                 font-family: 'Roboto', sans-serif;
                 font-weight: 500;
             }
@@ -81,17 +90,37 @@ class UserComponent extends HTMLElement{
             <i class="bi bi-arrow-bar-right userComponent__logout"></i>
         `;
 
+        this.#userElements = {
+
+            userComponent : userComponent,
+            userImg : userComponent.querySelector('.userComponent__image'),
+            userInfo : userComponent.querySelector('.userComponent__info'),
+            logout : userComponent.querySelector('.userComponent__logout')
+        }
+
         return userComponent;
     }
 
     collapse(){
 
-        
+        this.#userElements.userComponent.style.justifyContent = "start";
+
+        this.#userElements.userInfo.style.width = 0;
+        this.#userElements.userInfo.style.opacity = 0;
+        this.#userElements.userInfo.style.transform = "translate(20px, 0)";
+
+        this.#userElements.logout.style.transform = "translate(155px, 0)";
     }
 
     expand(){
 
-        
+        this.#userElements.userComponent.style.justifyContent = "space-between";
+
+        this.#userElements.userInfo.style.width = "unset";
+        this.#userElements.userInfo.style.opacity = 1;
+        this.#userElements.userInfo.style.transform = "translate(0px, 0)";
+
+        this.#userElements.logout.style.transform = "translate(0, 0)";
     }
     
 }

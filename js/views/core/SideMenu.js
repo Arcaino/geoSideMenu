@@ -28,8 +28,9 @@ class SideMenu extends HTMLElement{
 
             .sideMenu{
                 
-                width: 17rem;
+                width: 15rem;
                 height: 100%;
+                padding: 1rem;
                 background-color: ${themeColors.primaryColor};
                 box-shadow: 3px 0px 4px rgba(0, 0, 0, 0.25);
                 transition: width .5s; 
@@ -39,6 +40,7 @@ class SideMenu extends HTMLElement{
 
                 width: 4rem;
                 transition: width .5s;  
+                padding: 1rem .5rem;
             }
         `;
 
@@ -64,16 +66,15 @@ class SideMenu extends HTMLElement{
             geoLogo: this.#headerComponent.shadow.querySelector('.headerComponent__geoLogo'),
             collapseButton: this.#headerComponent.shadow.querySelector('.headerComponent__collapse'),
         }
-        const sideMenu = this.#headerComponent.shadow.getRootNode().host.parentElement;
 
         headerElement.collapseButton.addEventListener("click", () => {
 
-            if(this.#isCollapsed(sideMenu)){
+            if(this.#isCollapsed(this.#sideMenu)){
 
-                this.#expand(sideMenu, headerElement);
+                this.#expand(this.#sideMenu, headerElement);
             }else{
 
-                this.#collapse(sideMenu, headerElement);
+                this.#collapse(this.#sideMenu, headerElement);
             }
 
         });
@@ -83,12 +84,14 @@ class SideMenu extends HTMLElement{
 
         sideMenu.classList.remove('sideMenuCollapsed');
         this.#headerComponent.expand(headerElement);
+        this.#userComponent.expand();
     }
 
     #collapse(sideMenu, headerElement){
 
         sideMenu.classList.add('sideMenuCollapsed');
         this.#headerComponent.collapse(headerElement);
+        this.#userComponent.collapse();
     }
 
     #isCollapsed(sidemenu){
