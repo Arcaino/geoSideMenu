@@ -38,6 +38,14 @@ class ItemListComponent extends HTMLElement{
 
         return itemListComponent;
     }
+
+    collapse(){
+
+    }
+
+    expand(){
+        
+    }
 }
 
 customElements.define('item-list', ItemListComponent);

@@ -2,7 +2,7 @@ import themeColors from "../../utils/themeColors.js";
 
 class ToggleComponent extends HTMLElement{
 
-    #toggleButonsElements;
+    #buttons;
 
     constructor(){
         super();
@@ -15,6 +15,7 @@ class ToggleComponent extends HTMLElement{
         const shadow = this.attachShadow({ mode : 'open'});
         shadow.appendChild(this.#style());
         shadow.appendChild(this.#html());
+        this.#selectTab();
     }
 
     #style(){
@@ -61,6 +62,12 @@ class ToggleComponent extends HTMLElement{
                 border-radius: 0 .5rem .5rem 0;
                 border-left: 0;
             }
+
+            .active-tab{
+
+                background-color: ${themeColors.secundaryColor};
+                color: ${themeColors.primaryColor};
+            }
         `;
 
         return style;
@@ -74,7 +81,7 @@ class ToggleComponent extends HTMLElement{
 
             <ul class="toggleComponent__items">
                 <li>
-                    <button class="toggleComponent__items__button" id="menu">
+                    <button class="active-tab toggleComponent__items__button" id="menu">
                         <span>Menu</span>
                     </button>
                 </li>
@@ -93,15 +100,38 @@ class ToggleComponent extends HTMLElement{
             </ul>
         `;
 
-        this.#toggleButonsElements = {
-
-            menu: toggleComponent.querySelector('#menu'),
-            camadas: toggleComponent.querySelector('#camadas'),
-            favoritos: toggleComponent.querySelector('#favoritos')
-        }
+        this.#buttons = toggleComponent.querySelectorAll('.toggleComponent__items__button');
         
         return toggleComponent; 
     }
+
+    #selectTab(){
+
+        this.#buttons.forEach(item => {
+
+            item.addEventListener("click", () => {
+
+                this.#removeButtonSelection();
+                item.classList.add("active-tab");
+            })
+        });
+    }
+
+    #removeButtonSelection(){
+
+        this.#buttons.forEach(item => {
+
+            item.classList.remove("active-tab");
+        });
+    }
+
+    collapse(){
+
+    };
+
+    expand(){
+
+    };
 }
 
 customElements.define('toggle-component', ToggleComponent);
