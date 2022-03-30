@@ -70,40 +70,38 @@ class SideMenu extends HTMLElement{
 
         collapseButton.addEventListener("click", () => {
 
-            if(this.#isCollapsed(this.#sideMenu)){
+            this.#sideMenu.classList.toggle('sideMenuCollapsed');
 
-                this.#expand(this.#sideMenu);
+            if(this.#sideMenuIsCollapsed()){
+
+                this.#collapseAllComponents();
             }else{
 
-                this.#collapse(this.#sideMenu);
+                this.#expandAllComponents();
             }
 
         });
     }
 
-    #expand(sideMenu){
+    #expandAllComponents(){        
 
-        sideMenu.classList.remove('sideMenuCollapsed');
+        this.#sideMenu.childNodes.forEach(component => {
 
-        this.#sideMenu.childNodes.forEach(item => {
-
-            item.expand();
+            component.expand();
         });
     }
 
-    #collapse(sideMenu){
-
-        sideMenu.classList.add('sideMenuCollapsed');
+    #collapseAllComponents(){
         
-        this.#sideMenu.childNodes.forEach(item => {
+        this.#sideMenu.childNodes.forEach(component => {
         
-            item.collapse();
+            component.collapse();
         });
     }
 
-    #isCollapsed(sidemenu){
+    #sideMenuIsCollapsed(){
 
-        return sidemenu.classList.contains('sideMenuCollapsed');
+        return this.#sideMenu.classList.contains('sideMenuCollapsed');
     }
 }
 
