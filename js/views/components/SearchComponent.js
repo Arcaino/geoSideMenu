@@ -84,6 +84,16 @@ class SearchComponent extends HTMLElement{
 
         return searchComponent;
     }
+
+    collapse(){
+
+        
+    }
+
+    expand(){
+
+
+    }
 }
 
 customElements.define('search-component', SearchComponent);

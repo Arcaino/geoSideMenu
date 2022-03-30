@@ -66,38 +66,39 @@ class SideMenu extends HTMLElement{
 
     #collapseOrExpandSideMenu(){
 
-        const headerElement = {
+        const collapseButton = this.#headerComponent.shadow.querySelector('.headerComponent__collapse');
 
-            geoLogoLink: this.#headerComponent.shadow.querySelector('.headerComponent a'),
-            geoLogo: this.#headerComponent.shadow.querySelector('.headerComponent__geoLogo'),
-            collapseButton: this.#headerComponent.shadow.querySelector('.headerComponent__collapse'),
-        }
-
-        headerElement.collapseButton.addEventListener("click", () => {
+        collapseButton.addEventListener("click", () => {
 
             if(this.#isCollapsed(this.#sideMenu)){
 
-                this.#expand(this.#sideMenu, headerElement);
+                this.#expand(this.#sideMenu);
             }else{
 
-                this.#collapse(this.#sideMenu, headerElement);
+                this.#collapse(this.#sideMenu);
             }
 
         });
     }
 
-    #expand(sideMenu, headerElement){
+    #expand(sideMenu){
 
         sideMenu.classList.remove('sideMenuCollapsed');
-        this.#headerComponent.expand(headerElement);
-        this.#userComponent.expand();
+
+        this.#sideMenu.childNodes.forEach(item => {
+
+            item.expand();
+        });
     }
 
-    #collapse(sideMenu, headerElement){
+    #collapse(sideMenu){
 
         sideMenu.classList.add('sideMenuCollapsed');
-        this.#headerComponent.collapse(headerElement);
-        this.#userComponent.collapse();
+        
+        this.#sideMenu.childNodes.forEach(item => {
+        
+            item.collapse();
+        });
     }
 
     #isCollapsed(sidemenu){

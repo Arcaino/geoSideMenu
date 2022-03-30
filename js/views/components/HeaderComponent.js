@@ -1,5 +1,7 @@
 class HeaderComponent extends HTMLElement{
 
+    #headerElements;
+
     constructor(){
         super();
         this.#render();
@@ -68,25 +70,32 @@ class HeaderComponent extends HTMLElement{
             <i class="bi bi-arrow-left-short headerComponent__collapse"></i>
         `;
 
+        this.#headerElements = {
+
+            geoLogoLink: headerComponent.querySelector('.headerComponent a'),
+            geoLogo: headerComponent.querySelector('.headerComponent__geoLogo'),
+            collapseButton: headerComponent.querySelector('.headerComponent__collapse'),
+        }
+
         return headerComponent;
     }
 
-    collapse(headerElement){
+    collapse(){
 
-        headerElement.collapseButton.style.transform = "translate(-50%, 0) rotate(180deg)";
-        headerElement.collapseButton.style.transition = "all .5s"
+        this.#headerElements.collapseButton.style.transform = "translate(-50%, 0) rotate(180deg)";
+        this.#headerElements.collapseButton.style.transition = "all .5s"
 
-        headerElement.geoLogoLink.style.width = "0";
-        headerElement.geoLogo.style.opacity = "0";
+        this.#headerElements.geoLogoLink.style.width = "0";
+        this.#headerElements.geoLogo.style.opacity = "0";
     }
 
-    expand(headerElement){
+    expand(){
         
-        headerElement.collapseButton.style.transform = "translate(-50%, 0) rotate(0deg)";
-        headerElement.collapseButton.style.transition = "all .5s";  
+        this.#headerElements.collapseButton.style.transform = "translate(-50%, 0) rotate(0deg)";
+        this.#headerElements.collapseButton.style.transition = "all .5s";  
 
-        headerElement.geoLogoLink.style.width = "35px";
-        headerElement.geoLogo.style.opacity = "1";
+        this.#headerElements.geoLogoLink.style.width = "35px";
+        this.#headerElements.geoLogo.style.opacity = "1";
     }
 }
 
