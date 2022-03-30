@@ -91,7 +91,7 @@ class HeaderComponent extends HTMLElement{
 
     expand(){
         
-        this.#headerElements.collapseButton.style.transform = "translate(-50%, 0) rotate(0deg)";
+        this.#headerElements.collapseButton.style.transform = "translate(0%, 0) rotate(0deg)";
         this.#headerElements.collapseButton.style.transition = "all .5s";  
 
         this.#headerElements.geoLogoLink.style.width = "35px";

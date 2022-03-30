@@ -1,0 +1,109 @@
+import themeColors from "../../utils/themeColors.js";
+
+class ToggleComponent extends HTMLElement{
+
+    #toggleButonsElements;
+
+    constructor(){
+        super();
+
+        this.#render();
+    }
+
+    #render(){
+
+        const shadow = this.attachShadow({ mode : 'open'});
+        shadow.appendChild(this.#style());
+        shadow.appendChild(this.#html());
+    }
+
+    #style(){
+
+        const style = document.createElement('style');
+        style.textContent = `
+        
+            @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
+
+            .toggleComponent{
+                
+                margin: 1.5rem 0;
+            }
+
+            .toggleComponent__items{
+
+                display: flex;
+                justify-content: center;       
+                list-style-type: none;
+                padding: 0;
+            }
+
+            .toggleComponent__items__button{
+
+                border: 1px solid ${themeColors.itemColor};
+                background-color: ${themeColors.primaryColor};
+                color: ${themeColors.itemColor};
+                text-transform: uppercase;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 700;
+                font-size: 1rem;
+                padding: 1rem 1rem;
+                cursor: pointer;
+            }
+
+            .toggleComponent__items li:first-child .toggleComponent__items__button{
+
+                border-radius: .5rem 0 0 .5rem;
+                border-right: 0;
+            }
+
+            .toggleComponent__items li:last-child .toggleComponent__items__button{
+
+                border-radius: 0 .5rem .5rem 0;
+                border-left: 0;
+            }
+        `;
+
+        return style;
+    }
+
+    #html(){
+
+        const toggleComponent = document.createElement('div');
+        toggleComponent.classList.add('toggleComponent');
+        toggleComponent.innerHTML = `
+
+            <ul class="toggleComponent__items">
+                <li>
+                    <button class="toggleComponent__items__button" id="menu">
+                        <span>Menu</span>
+                    </button>
+                </li>
+                <li>
+                    <button class="toggleComponent__items__button" id="camadas">                       
+                            <span>Camadas</span>
+                    </button>
+                </li>
+                <li>
+                    <button class="toggleComponent__items__button" id="favoritos">
+                        <span>
+                            <i class="bi bi-bookmark-star"></i>
+                        </span>                    
+                    </button>
+                </li>
+            </ul>
+        `;
+
+        this.#toggleButonsElements = {
+
+            menu: toggleComponent.querySelector('#menu'),
+            camadas: toggleComponent.querySelector('#camadas'),
+            favoritos: toggleComponent.querySelector('#favoritos')
+        }
+        
+        return toggleComponent; 
+    }
+}
+
+customElements.define('toggle-component', ToggleComponent);
+
+export default ToggleComponent;

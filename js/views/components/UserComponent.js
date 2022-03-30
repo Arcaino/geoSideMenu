@@ -38,7 +38,8 @@ class UserComponent extends HTMLElement{
 
                 font-size: 1.5rem;
                 transition: font-size .3s;
-                color: ${themeColors.secundaryColor}
+                color: ${themeColors.secundaryColor};
+                cursor: pointer;
             }
             
             .userComponent__image{
