@@ -2,10 +2,14 @@ import themeColors from "../../utils/themeColors.js";
 
 class SearchComponent extends HTMLElement{
 
+    #searchElements;
+    #sideMenuIsCollapsed;
+
     constructor(){
         super();
 
         this.#render();
+        this.#sideMenuIsCollapsed = false;
     }
 
     #render(){
@@ -13,6 +17,7 @@ class SearchComponent extends HTMLElement{
         const shadow = this.attachShadow({ mode : 'open' });
         shadow.appendChild(this.#style());
         shadow.appendChild(this.#html());
+        this.#collapseOrExpandSearchInput();
     }
 
     #style(){
@@ -51,15 +56,13 @@ class SearchComponent extends HTMLElement{
                 color: #6C757D;                
             }
 
-            .searchComponent::before {
+            .searchComponent__icon i{
 
-                content: "\\f52a";
-                visibility: visible;
-                font-family: "bootstrap-icons";
                 color: ${themeColors.secundaryColor};
                 font-weight: bold;
                 position: absolute;
-                transform: translate(210px, 10px);
+                transform: translate(210px, -27px);
+                transition: all .5s;
             }
 
             .searchComponent__search:focus{
@@ -80,7 +83,17 @@ class SearchComponent extends HTMLElement{
         searchComponent.innerHTML = `
 
             <input type="text" class="searchComponent__search" name="fname" placeholder="Pesquisar...">
+            <span class="searchComponent__icon">
+                <i class="bi bi-search"></i>
+            </span>
         `;
+
+        this.#searchElements = {
+
+            component: searchComponent,
+            input: searchComponent.querySelector('.searchComponent__search'),
+            icon: searchComponent.querySelector('.searchComponent__icon i')
+        };
 
         return searchComponent;
     }
@@ -88,11 +101,95 @@ class SearchComponent extends HTMLElement{
     collapse(){
 
         
+        this.#searchElements.icon.style.cursor = "pointer";
+        this.#searchElements.icon.style.transform = "translate(150%, -27px)";
+
+        this.#searchElements.input.style.transform = "translate(120%, 0)";
+        this.#searchElements.input.style.visibility = "hidden";
+
+        this.#sideMenuIsCollapsed = true;
     }
 
     expand(){
 
+        this.#searchElements.icon.style.transform = "translate(210px, -27px)";
+        this.#searchElements.icon.style.cursor = "default";
+        this.#searchElements.icon.className =  "bi bi-search";
+        this.#searchElements.icon.style.color = themeColors.secundaryColor;
+        this.#searchElements.icon.style.backgroundColor = themeColors.primaryColor;
+        this.#searchElements.icon.style.borderRadius = "0";
+        this.#searchElements.icon.style.padding = "0";
 
+        this.#searchElements.input.style.transform = "translate(0, 0)";
+        this.#searchElements.input.style.visibility = "visible";
+        this.#searchElements.input.style.width = "100%";
+
+        this.#sideMenuIsCollapsed = false;
+    }
+
+    #collapseOrExpandSearchInput(){
+
+        this.#searchElements.icon.addEventListener("click", () => {
+
+            if(this.#sideMenuIsCollapsed == false) return;
+            if(this.#searchInputIsCollapsed() && this.#sideMenuIsCollapsed == true){
+                
+                this.#expandSearch();
+            }else{
+
+                this.#collapseSearch();
+            }
+        
+        });
+    }
+
+    #expandSearch(){
+
+        this.#styleExpandedSearchIcon();
+        this.#styleExpandedSearchInput();
+    }
+
+    #collapseSearch(){
+
+        this.#styleCollapsedSearchIcon();
+        this.#styleExpandedCollapsedInput();
+    }
+
+    #styleCollapsedSearchIcon(){
+
+        this.#searchElements.icon.className =  "bi bi-search";
+        this.#searchElements.icon.style.color = themeColors.secundaryColor;
+        this.#searchElements.icon.style.backgroundColor = themeColors.primaryColor;
+        this.#searchElements.icon.style.borderRadius = "0";
+        this.#searchElements.icon.style.padding = "0";
+        this.#searchElements.icon.style.transform = "translate(150%, -27px)";
+    }
+
+    #styleExpandedSearchIcon(){
+
+        this.#searchElements.icon.className =  "bi bi-arrow-left";
+        this.#searchElements.icon.style.color = themeColors.primaryColor;
+        this.#searchElements.icon.style.backgroundColor = themeColors.secundaryColor;
+        this.#searchElements.icon.style.borderRadius = "0.3rem";
+        this.#searchElements.icon.style.padding = ".5rem";
+        this.#searchElements.icon.style.transform = "translate(50%, -36px)";
+    }
+
+    #styleExpandedCollapsedInput(){
+
+        this.#searchElements.input.style.visibility = "hidden";
+    }
+
+    #styleExpandedSearchInput(){
+
+        this.#searchElements.input.style.width = "15rem";
+        this.#searchElements.input.style.transform = "translate(55px, 0px)";
+        this.#searchElements.input.style.visibility = "visible";
+    }
+
+    #searchInputIsCollapsed(){
+
+        return this.#searchElements.icon.classList.value == 'bi bi-search';
     }
 }
 
