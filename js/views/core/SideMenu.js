@@ -1,6 +1,7 @@
 import themeColors from '../../utils/themeColors.js';
 import CategoryComponent from '../components/CategoryComponent.js';
 import HeaderComponent from '../components/HeaderComponent.js';
+import ItemComponent from '../components/ItemComponent.js';
 import ItemListComponent from '../components/ItemListComponent.js';
 import SearchComponent from '../components/SearchComponent.js';
 import ToggleComponent from '../components/ToggleComponent.js';
@@ -13,8 +14,9 @@ class SideMenu extends HTMLElement{
     #userComponent;
     #searchComponent;
     #itemListComponent;
-    #toggleComponent;    
+    #toggleComponent;
     #categoryComponent;
+    #itemComponent;
 
     constructor(){
         super();
@@ -66,8 +68,10 @@ class SideMenu extends HTMLElement{
             this.#userComponent = new UserComponent(),
             this.#searchComponent = new SearchComponent(),
             this.#itemListComponent = new ItemListComponent(
+
                 this.#toggleComponent = new ToggleComponent(),
                 this.#categoryComponent = new CategoryComponent('Documentos'),
+                this.#itemComponent = new ItemComponent('bi bi-folder2', 'GeoDocumentos', true),
             ) 
         );
 

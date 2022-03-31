@@ -1,9 +1,9 @@
 class ItemListComponent extends HTMLElement{
 
+    #itemListComponent;
     #toggle;
     #category;
     #items;
-    #itemListComponent;
 
     constructor(toggle, category, items){
         super();
@@ -38,6 +38,7 @@ class ItemListComponent extends HTMLElement{
         this.#itemListComponent.append(
             this.#toggle,
             this.#category,
+            this.#items
         );
 
         return this.#itemListComponent;
