@@ -2,12 +2,15 @@ import themeColors from "../../utils/themeColors.js";
 
 class ToggleComponent extends HTMLElement{
 
-    #buttons;
+    #toggleElements;
+    #sideMenuIsCollapsed;
+    #buttonActions;
 
     constructor(){
         super();
+        this.#sideMenuIsCollapsed = false;
 
-        this.#render();
+        this.#render();        
     }
 
     #render(){
@@ -16,6 +19,7 @@ class ToggleComponent extends HTMLElement{
         shadow.appendChild(this.#style());
         shadow.appendChild(this.#html());
         this.#selectTab();
+        this.#showToggleItemsOnHoverWhenSideMenuIsCollapsed();
     }
 
     #style(){
@@ -49,6 +53,7 @@ class ToggleComponent extends HTMLElement{
                 font-size: 1rem;
                 padding: 1rem 1rem;
                 cursor: pointer;
+                transition: transform 0.5s ease 0s;
             }
 
             .toggleComponent__items li:first-child .toggleComponent__items__button{
@@ -67,6 +72,7 @@ class ToggleComponent extends HTMLElement{
 
                 background-color: ${themeColors.secundaryColor};
                 color: ${themeColors.primaryColor};
+                z-index: 9;
             }
         `;
 
@@ -100,38 +106,135 @@ class ToggleComponent extends HTMLElement{
             </ul>
         `;
 
-        this.#buttons = toggleComponent.querySelectorAll('.toggleComponent__items__button');
+        this.#toggleElements = {
+
+            buttons: toggleComponent.querySelectorAll('.toggleComponent__items__button'),
+            toggle: toggleComponent,                       
+            menu: toggleComponent.querySelector('#menu'),
+            camadas: toggleComponent.querySelector('#camadas'),
+            favoritos: toggleComponent.querySelector('#favoritos')
+        }
+        this.#buttonActions = {
+
+            notSelectedButtons: toggleComponent.querySelectorAll('.toggleComponent__items__button:not(.active-tab)'),
+            selectedButton: toggleComponent.querySelector('.active-tab')
+        }
         
         return toggleComponent; 
     }
 
+    collapse(){
+
+        this.#toggleElements.toggle.style.justifyContent = "unset";
+
+        this.#toggleElements.menu.innerHTML = `<i class="bi bi-grid"></i>`;
+
+        this.#toggleElements.camadas.innerHTML = `<i class="bi bi-layers"></i>`;
+
+        this.#toggleElements.buttons.forEach(item => {
+
+            item.style.position = "absolute";
+            item.style.transform = "translate(-50%, 0%)";
+            item.style.border = `1px solid ${themeColors.itemColor}`;
+            item.style.borderRadius = "0.5rem"
+        });
+
+        this.#sideMenuIsCollapsed = true;
+    };
+
+    expand(){
+
+        this.#toggleElements.menu.innerHTML = `<span>Menu</span>`;
+
+        this.#toggleElements.camadas.innerHTML = `<span>Camadas</span>`;
+
+        this.#toggleElements.toggle.removeAttribute("style");
+        
+        this.#buttonActions.selectedButton.removeAttribute("style");
+
+        this.#buttonActions.notSelectedButtons.forEach(item => {
+
+            item.removeAttribute("style");
+        });
+
+        this.#sideMenuIsCollapsed = false;
+    };
+
+    #showToggleItemsOnHoverWhenSideMenuIsCollapsed(){
+
+        this.#toggleElements.buttons.forEach(item => {
+
+            item.addEventListener("mouseover", () => {
+
+                this.#setStyleOfButtonsOnHoverWhenSideMenuIsCollapsed();
+            });
+        });
+
+        this.#toggleElements.toggle.addEventListener("mouseleave", () => {
+
+            this.#removeStyleOfButtonsHoveredWhenSideMenuIsCollapsed();
+        });
+    }
+
     #selectTab(){
 
-        this.#buttons.forEach(item => {
+        this.#toggleElements.buttons.forEach(item => {
 
             item.addEventListener("click", () => {
 
                 this.#removeButtonSelection();
                 item.classList.add("active-tab");
+                this.#defineSelectedAndNonSelectedButtons();
+                this.#setStyleOfButtonsOnHoverWhenSideMenuIsCollapsed();
             })
         });
     }
 
     #removeButtonSelection(){
 
-        this.#buttons.forEach(item => {
+        this.#toggleElements.buttons.forEach(item => {
 
             item.classList.remove("active-tab");
         });
     }
 
-    collapse(){
+    #defineSelectedAndNonSelectedButtons(){
 
-    };
+        this.#buttonActions = {
 
-    expand(){
+            notSelectedButtons: this.#toggleElements.toggle.querySelectorAll('.toggleComponent__items__button:not(.active-tab)'),
+            selectedButton: this.#toggleElements.toggle.querySelector('.active-tab'),
+        }
+    }
 
-    };
+    #setStyleOfButtonsOnHoverWhenSideMenuIsCollapsed(){
+
+        if(this.#sideMenuIsCollapsed){
+
+            this.#toggleElements.menu.style.transform = "translate(-50%, 0%)";
+            this.#toggleElements.menu.style.borderRadius = "0.5rem 0 0 0.5rem";
+
+            this.#toggleElements.camadas.style.transform = "translate(50%, 0%)";
+            this.#toggleElements.camadas.style.borderRadius = "0";
+
+            this.#toggleElements.favoritos.style.transform = "translate(150%, 0%)";
+            this.#toggleElements.favoritos.style.borderRadius = "0 0.5rem 0.5rem 0";
+        }
+    }
+
+    #removeStyleOfButtonsHoveredWhenSideMenuIsCollapsed(){
+
+        if(this.#sideMenuIsCollapsed){
+
+            this.#toggleElements.camadas.style.zIndex = "5";
+
+            this.#toggleElements.buttons.forEach(item => {
+
+                item.style.transform = "translate(-50%, 0%)";
+                item.style.borderRadius = "0.5rem";
+            })
+        }
+    }
 }
 
 customElements.define('toggle-component', ToggleComponent);

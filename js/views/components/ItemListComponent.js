@@ -2,6 +2,7 @@ class ItemListComponent extends HTMLElement{
 
     #toggle;
     #items;
+    #itemListComponent;
 
     constructor(toggle, items){
         super();
@@ -30,21 +31,29 @@ class ItemListComponent extends HTMLElement{
 
     #html(){
 
-        const itemListComponent = document.createElement('div');
-        itemListComponent.classList.add('itemListComponent');
-        itemListComponent.append(
+        this.#itemListComponent = document.createElement('div');
+        this.#itemListComponent.classList.add('itemListComponent');
+        this.#itemListComponent.append(
             this.#toggle,
         );
 
-        return itemListComponent;
+        return this.#itemListComponent;
     }
 
     collapse(){
 
+        this.#itemListComponent.childNodes.forEach(component => {
+        
+            component.collapse();
+        });
     }
 
     expand(){
         
+        this.#itemListComponent.childNodes.forEach(component => {
+
+            component.expand();
+        });
     }
 }
 
