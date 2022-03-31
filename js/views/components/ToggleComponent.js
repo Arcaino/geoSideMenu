@@ -39,7 +39,7 @@ class ToggleComponent extends HTMLElement{
                 display: flex;
                 justify-content: center;       
                 list-style-type: none;
-                padding: 0;
+                padding: 0;                
                 overflow: hidden;
             }
 
@@ -53,7 +53,8 @@ class ToggleComponent extends HTMLElement{
                 font-weight: 700;
                 font-size: 1rem;
                 padding: 1rem .9rem;
-                cursor: pointer;                
+                cursor: pointer;            
+                position: relative;    
             }
 
             .toggleComponent__items li:first-child .toggleComponent__items__button{
@@ -109,7 +110,8 @@ class ToggleComponent extends HTMLElement{
         this.#toggleElements = {
 
             buttons: toggleComponent.querySelectorAll('.toggleComponent__items__button'),
-            toggle: toggleComponent,                       
+            toggle: toggleComponent,           
+            items: toggleComponent.querySelector('.toggleComponent__items'),           
             menu: toggleComponent.querySelector('#menu'),
             camadas: toggleComponent.querySelector('#camadas'),
             favoritos: toggleComponent.querySelector('#favoritos')
@@ -125,21 +127,21 @@ class ToggleComponent extends HTMLElement{
 
     collapse(){
 
+        this.#sideMenuIsCollapsed = true;
+
         this.#toggleElements.toggle.style.justifyContent = "unset";
 
         this.#toggleElements.menu.innerHTML = `<i class="bi bi-grid"></i>`;
 
         this.#toggleElements.camadas.innerHTML = `<i class="bi bi-layers"></i>`;
 
+        this.#removeStyleOfButtonsHoveredWhenSideMenuIsCollapsed();
+
         this.#toggleElements.buttons.forEach(item => {
 
-            item.style.position = "absolute";
-            item.style.transform = "translate(-50%, 0%)";
             item.style.border = `1px solid ${themeColors.itemColor}`;
             item.style.borderRadius = "0.5rem";
         });
-
-        this.#sideMenuIsCollapsed = true;
     };
 
     expand(){
@@ -148,8 +150,7 @@ class ToggleComponent extends HTMLElement{
 
         this.#toggleElements.camadas.innerHTML = `<span>Camadas</span>`;
 
-        this.#toggleElements.toggle.removeAttribute("style");
-        
+        this.#toggleElements.toggle.removeAttribute("style");        
         this.#buttonActions.selectedButton.removeAttribute("style");
 
         this.#buttonActions.notSelectedButtons.forEach(item => {
@@ -211,17 +212,14 @@ class ToggleComponent extends HTMLElement{
 
         if(this.#sideMenuIsCollapsed){
             
-            this.#toggleElements.menu.style.transform = "translate(-50%, 0%)";
             this.#toggleElements.menu.style.borderRadius = "0.5rem 0 0 0.5rem";
-
-            this.#toggleElements.camadas.style.transform = "translate(50%, 0%)";
             this.#toggleElements.camadas.style.borderRadius = "0";
-
-            this.#toggleElements.favoritos.style.transform = "translate(150%, 0%)";
-            this.#toggleElements.favoritos.style.borderRadius = "0 0.5rem 0.5rem 0";
+            this.#toggleElements.favoritos.style.borderRadius = "0 0.5rem 0.5rem 0";            
+            this.#toggleElements.items.style.overflow = "visible";
 
             this.#toggleElements.buttons.forEach(item => {
-
+                
+                item.style.transform = "translate(100%, 0%)";
                 item.style.transition = "transform 0.5s ease 0s";
             })
         }
@@ -232,11 +230,14 @@ class ToggleComponent extends HTMLElement{
         if(this.#sideMenuIsCollapsed){
 
             this.#toggleElements.camadas.style.zIndex = "5";
+            this.#toggleElements.menu.style.transform = "translate(100%, 0%)";
+            this.#toggleElements.camadas.style.transform = "translate(0%, 0%)";
+            this.#toggleElements.favoritos.style.transform = "translate(-100%, 0%)";
+            this.#toggleElements.items.removeAttribute("style");
 
             this.#toggleElements.buttons.forEach(item => {
 
-                item.style.transform = "translate(-50%, 0%)";
-                item.style.borderRadius = "0.5rem";                
+                item.style.borderRadius = "0.5rem";
             })
         }
     }
