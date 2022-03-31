@@ -3,6 +3,7 @@ import themeColors from "../../utils/themeColors.js";
 class CategoryComponent extends HTMLElement{
 
     #name;
+    #categoryComponent;
 
     constructor(name){
         super();
@@ -33,6 +34,7 @@ class CategoryComponent extends HTMLElement{
                 font-size: 13px;
                 line-height: 18px;
                 margin: 1rem 0;
+                transition: all .5s;
             }
         `;
 
@@ -41,23 +43,25 @@ class CategoryComponent extends HTMLElement{
 
     #html(){
 
-        const categoryComponent = document.createElement('div');
-        categoryComponent.classList.add('categoryComponent');
-        categoryComponent.innerHTML = `
+        this.#categoryComponent = document.createElement('div');
+        this.#categoryComponent.classList.add('categoryComponent');
+        this.#categoryComponent.innerHTML = `
             
             ${this.#name}
         `;
 
-        return categoryComponent;
+        return this.#categoryComponent;
     }
 
     collapse(){
-
+        
+        this.#categoryComponent.style.fontSize = "9px";
+        this.#categoryComponent.style.fontWeight = "600";
     }
 
     expand(){
 
-
+        this.#categoryComponent.removeAttribute("style");
     }
 }
 
