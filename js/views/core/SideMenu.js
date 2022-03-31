@@ -1,4 +1,5 @@
 import themeColors from '../../utils/themeColors.js';
+import CategoryComponent from '../components/CategoryComponent.js';
 import HeaderComponent from '../components/HeaderComponent.js';
 import ItemListComponent from '../components/ItemListComponent.js';
 import SearchComponent from '../components/SearchComponent.js';
@@ -13,6 +14,7 @@ class SideMenu extends HTMLElement{
     #searchComponent;
     #itemListComponent;
     #toggleComponent;    
+    #categoryComponent;
 
     constructor(){
         super();
@@ -64,7 +66,8 @@ class SideMenu extends HTMLElement{
             this.#userComponent = new UserComponent(),
             this.#searchComponent = new SearchComponent(),
             this.#itemListComponent = new ItemListComponent(
-                this.#toggleComponent = new ToggleComponent()
+                this.#toggleComponent = new ToggleComponent(),
+                this.#categoryComponent = new CategoryComponent('Documentos'),
             ) 
         );
 
