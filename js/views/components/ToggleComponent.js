@@ -31,7 +31,7 @@ class ToggleComponent extends HTMLElement{
 
             .toggleComponent{
                 
-                margin: 1.5rem 0;
+                margin: 1.5rem 0;                
             }
 
             .toggleComponent__items{
@@ -40,6 +40,7 @@ class ToggleComponent extends HTMLElement{
                 justify-content: center;       
                 list-style-type: none;
                 padding: 0;
+                overflow: hidden;
             }
 
             .toggleComponent__items__button{
@@ -51,9 +52,8 @@ class ToggleComponent extends HTMLElement{
                 font-family: 'Roboto', sans-serif;
                 font-weight: 700;
                 font-size: 1rem;
-                padding: 1rem 1rem;
-                cursor: pointer;
-                transition: transform 0.5s ease 0s;
+                padding: 1rem .9rem;
+                cursor: pointer;                
             }
 
             .toggleComponent__items li:first-child .toggleComponent__items__button{
@@ -136,7 +136,7 @@ class ToggleComponent extends HTMLElement{
             item.style.position = "absolute";
             item.style.transform = "translate(-50%, 0%)";
             item.style.border = `1px solid ${themeColors.itemColor}`;
-            item.style.borderRadius = "0.5rem"
+            item.style.borderRadius = "0.5rem";
         });
 
         this.#sideMenuIsCollapsed = true;
@@ -210,7 +210,7 @@ class ToggleComponent extends HTMLElement{
     #setStyleOfButtonsOnHoverWhenSideMenuIsCollapsed(){
 
         if(this.#sideMenuIsCollapsed){
-
+            
             this.#toggleElements.menu.style.transform = "translate(-50%, 0%)";
             this.#toggleElements.menu.style.borderRadius = "0.5rem 0 0 0.5rem";
 
@@ -219,6 +219,11 @@ class ToggleComponent extends HTMLElement{
 
             this.#toggleElements.favoritos.style.transform = "translate(150%, 0%)";
             this.#toggleElements.favoritos.style.borderRadius = "0 0.5rem 0.5rem 0";
+
+            this.#toggleElements.buttons.forEach(item => {
+
+                item.style.transition = "transform 0.5s ease 0s";
+            })
         }
     }
 
@@ -231,7 +236,7 @@ class ToggleComponent extends HTMLElement{
             this.#toggleElements.buttons.forEach(item => {
 
                 item.style.transform = "translate(-50%, 0%)";
-                item.style.borderRadius = "0.5rem";
+                item.style.borderRadius = "0.5rem";                
             })
         }
     }
