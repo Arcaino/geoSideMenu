@@ -1,7 +1,6 @@
+import SideMenuController from '../../controllers/SideMenuController.js';
 import themeColors from '../../utils/themeColors.js';
-import CategoryComponent from '../components/CategoryComponent.js';
 import HeaderComponent from '../components/HeaderComponent.js';
-import ItemComponent from '../components/ItemComponent.js';
 import ItemListComponent from '../components/ItemListComponent.js';
 import SearchComponent from '../components/SearchComponent.js';
 import ToggleComponent from '../components/ToggleComponent.js';
@@ -13,21 +12,24 @@ class SideMenu extends HTMLElement{
     #sideMenu;
     #userComponent;
     #searchComponent;
+    #toggleComponent;    
+    #sideMenuController;
     #itemListComponent;
-    #toggleComponent;
-    #categoryComponent;
-    #itemComponent;
 
     constructor(){
         super();
-        this.#render();
+
+        this.#sideMenuController = new SideMenuController();
+        this.#sideMenuController.getAllCategories().then(() => { 
+            this.#render();
+        });        
     }
 
     #render(){
 
         const shadow = this.attachShadow({ mode: 'open' });
         shadow.appendChild(this.#style());
-        shadow.appendChild(this.#html());   
+        shadow.appendChild(this.#html(this.#sideMenuController));   
         this.#collapseOrExpandSideMenu();     
     }
 
@@ -57,7 +59,7 @@ class SideMenu extends HTMLElement{
         return style;
     }
 
-    #html(){
+    #html(items){
 
         this.#sideMenu = document.createElement('div');
         this.#sideMenu.classList.add('sideMenu');
@@ -67,12 +69,13 @@ class SideMenu extends HTMLElement{
             this.#headerComponent = new HeaderComponent(),
             this.#userComponent = new UserComponent(),
             this.#searchComponent = new SearchComponent(),
-            this.#itemListComponent = new ItemListComponent(
+            this.#toggleComponent = new ToggleComponent(),
+            this.#itemListComponent = new ItemListComponent(),
+            
+            Object.entries(items.categories).forEach(item => {
 
-                this.#toggleComponent = new ToggleComponent(),
-                this.#categoryComponent = new CategoryComponent('Documentos'),
-                this.#itemComponent = new ItemComponent('bi bi-folder2', 'GeoDocumentos', true),
-            ) 
+                this.#itemListComponent.add(item[0], item[1])
+            })
         );
 
         return this.#sideMenu;

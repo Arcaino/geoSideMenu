@@ -6,565 +6,547 @@
 
             "categories": {
 
-                "0": {
+                "Documentos": [
                     
-                    "id": "1",
-                    "name": "Documentos"
-                },
+                    {
+                        "name": "GeoDocumentos",
+                        "icon": "bi bi-folder2",
+                        "categoryId": 1,            
+                        "toast": {
+            
+                            "name": "",
+                            "description": "",
+                            "gif": ""
+                        },
+                        "subList": [
+            
+                            {
+    
+                                "name": "Gerenciar",
+                                "subList": null
+                            },
+    
+                            {
+    
+                                "name": "Ler QRCode",
+                                "subList": null
+                            },
+    
+                            {
+    
+                                "name": "Enviar",
+                                "subList": null
+                            }
+                        ]
+                    },
+
+                    {
         
-                "1": {
+                        "name": "Certidões e Relatórios",
+                        "icon": "bi bi-file-earmark-text",
+                        "categoryId": 1,            
+                        "toast": {
+            
+                            "name": "",
+                            "description": "",
+                            "gif": ""
+                        },
+                        "subList": [
+            
+                            {
+    
+                                "name": "Gerar Certidões",
+                                "subList": null
+                            },
+    
+                            {
+    
+                                "name": "Gerar Modelos de Certidões",
+                                "subList": null
+                            },
+    
+                            {
+    
+                                "name": "Gerar Certidões Diversas",
+                                "subList": null
+                            }
+                        ]
+                    },
                     
-                    "id": "2",
-                    "name": "Dados"
-                },
+                    {
         
-                "2": {
-                    
-                    "id": "3",
-                    "name": "Dispositivos móveis"
-                },
-        
-                "3": {
-                    
-                    "id": "4",
-                    "name": "Atendimento"
-                },
-        
-                "4": {
-                    
-                    "id": "5",
-                    "name": "Outros"
-                }
-            },
-
-            "items": {
-
-                "0":{
-        
-                    "name": "GeoDocumentos",
-                    "icon": "bi bi-folder2",
-                    "category-id": 1,            
-                    "toast": {
-        
-                        "name": "",
-                        "description": "",
-                        "gif": ""
-                    },
-                    "sublist": {
-        
-                        "0": {
-
-                            "name": "Gerenciar",
-                            "sublist": null
+                        "name": "Consulta de Viabilidade",
+                        "icon": "bi bi-card-checklist",
+                        "categoryId": 1,            
+                        "toast": {
+            
+                            "name": "",
+                            "description": "",
+                            "gif": ""
                         },
-
-                        "1": {
-
-                            "name": "Ler QRCode",
-                            "sublist": null
-                        },
-
-                        "2": {
-
-                            "name": "Enviar",
-                            "sublist": null
-                        }
+                        "subList": [
+            
+                            {
+    
+                                "name": "Autenticidade do Documento",
+                                "subList": null
+                            },
+    
+                            {
+    
+                                "name": "Consultar documentos",
+                                "subList": null
+                            },
+    
+                            {
+    
+                                "name": "Funcionamento",
+                                "subList": null
+                            },
+    
+                            {
+    
+                                "name": "Parcelamento do Solo",
+                                "subList": null
+                            },
+                            
+                            {
+    
+                                "name": "Licenciamento Obras e Edificações",
+                                "subList": null
+                            }
+                        ]
                     }
-                },
+                ],
 
-                "1":{
+                "Dados": [
+
+                    {
         
-                    "name": "Certidões e Relatórios",
-                    "icon": "bi bi-file-earmark-text",
-                    "category-id": 1,            
-                    "toast": {
-        
-                        "name": "",
-                        "description": "",
-                        "gif": ""
+                        "name": "Estatísticas",
+                        "icon": "bi bi-bar-chart",
+                        "categoryId": 2,            
+                        "toast": {
+            
+                            "name": "",
+                            "description": "",
+                            "gif": ""
+                        },
+                        "subList": [
+            
+                            {
+    
+                                "name": "Gráficos",
+                                "subList": null
+                            },
+    
+                            {
+    
+                                "name": "Integridade",
+                                "subList": null
+                            }
+                        ]
                     },
-                    "sublist": {
-        
-                        "0": {
 
-                            "name": "Gerar Certidões",
-                            "sublist": null
+                    {
+        
+                        "name": "Dashboards",
+                        "icon": "bi bi-grid-1x2",
+                        "categoryId": 2,            
+                        "toast": {
+            
+                            "name": "",
+                            "description": "",
+                            "gif": ""
                         },
-
-                        "1": {
-
-                            "name": "Gerar Modelos de Certidões",
-                            "sublist": null
-                        },
-
-                        "2": {
-
-                            "name": "Gerar Certidões Diversas",
-                            "sublist": null
-                        }
-                    }
-                },
-
-                "2":{
-        
-                    "name": "Consulta de Viabilidade",
-                    "icon": "bi bi-card-checklist",
-                    "category-id": 1,            
-                    "toast": {
-        
-                        "name": "",
-                        "description": "",
-                        "gif": ""
+                        "subList": null
                     },
-                    "sublist": {
+
+                    {
         
-                        "0": {
-
-                            "name": "Autenticidade do Documento",
-                            "sublist": null
+                        "name": "Edição Tabular",
+                        "icon": "bi bi-pencil-square",
+                        "categoryId": 2,            
+                        "toast": {
+            
+                            "name": "",
+                            "description": "",
+                            "gif": ""
                         },
-
-                        "1": {
-
-                            "name": "Consultar documentos",
-                            "sublist": null
-                        },
-
-                        "2": {
-
-                            "name": "Funcionamento",
-                            "sublist": null
-                        },
-
-                        "3": {
-
-                            "name": "Parcelamento do Solo",
-                            "sublist": null
-                        },
-                        
-                        "4": {
-
-                            "name": "Licenciamento Obras e Edificações",
-                            "sublist": null
-                        }
-                    }
-                },
-
-                "3":{
-        
-                    "name": "Estatísticas",
-                    "icon": "bi bi-bar-chart",
-                    "category-id": 2,            
-                    "toast": {
-        
-                        "name": "",
-                        "description": "",
-                        "gif": ""
+                        "subList": [
+            
+                            {
+    
+                                "name": "Campos",
+                                "subList": null
+                            },
+    
+                            {
+    
+                                "name": "Valores",
+                                "subList": null
+                            }
+                        ]
                     },
-                    "sublist": {
-        
-                        "0": {
 
-                            "name": "Gráficos",
-                            "sublist": null
+                    {
+        
+                        "name": "Cadastros",
+                        "icon": "bi bi-file-earmark-plus",
+                        "categoryId": 2,            
+                        "toast": {
+            
+                            "name": "",
+                            "description": "",
+                            "gif": ""
                         },
-
-                        "1": {
-
-                            "name": "Integridade",
-                            "sublist": null
-                        }
-                    }
-                },
-
-                "4":{
-        
-                    "name": "Dashboards",
-                    "icon": "bi bi-grid-1x2",
-                    "category-id": 2,            
-                    "toast": {
-        
-                        "name": "",
-                        "description": "",
-                        "gif": ""
+                        "subList": [
+            
+                            {
+    
+                                "name": "Imobiliário",
+                                "subList": null
+                            },
+    
+                            {
+    
+                                "name": "Pessoa",
+                                "subList": null
+                            },
+    
+                            {
+    
+                                "name": "Zoneamento",
+                                "subList": [
+                                    
+                                    {
+    
+                                        "name": "CNAE"
+                                    },
+    
+                                    {
+    
+                                        "name": "Usos"
+                                    },
+    
+                                    {
+    
+                                        "name": "Parâmetros"
+                                    },
+                                    
+                                    {
+    
+                                        "name": "Vincular"
+                                    },
+    
+                                    {
+    
+                                        "name": "Desvincular"
+                                    }
+                                ]
+                            }
+                        ]
                     },
-                    "sublist": null
-                },
 
-                "5":{
+                    {
         
-                    "name": "Edição Tabular",
-                    "icon": "bi bi-pencil-square",
-                    "category-id": 2,            
-                    "toast": {
-        
-                        "name": "",
-                        "description": "",
-                        "gif": ""
+                        "name": "Ordens de Serviço",
+                        "icon": "bi bi-ui-checks",
+                        "categoryId": 2,            
+                        "toast": {
+            
+                            "name": "",
+                            "description": "",
+                            "gif": ""
+                        },
+                        "subList": [
+            
+                            {
+    
+                                "name": "Criar",
+                                "subList": null
+                            },
+    
+                            {
+    
+                                "name": "Gerenciar",
+                                "subList": null
+                            }
+                        ]
                     },
-                    "sublist": {
-        
-                        "0": {
 
-                            "name": "Campos",
-                            "sublist": null
+                    {
+
+                        "name": "Ferramentas de Mapa",
+                        "icon": "bi bi-map",
+                        "categoryId": 2,            
+                        "toast": {
+            
+                            "name": "",
+                            "description": "",
+                            "gif": ""
                         },
-
-                        "1": {
-
-                            "name": "Valores",
-                            "sublist": null
-                        }
-                    }
-                },
-
-                "6":{
-        
-                    "name": "Cadastros",
-                    "icon": "bi bi-file-earmark-plus",
-                    "category-id": 2,            
-                    "toast": {
-        
-                        "name": "",
-                        "description": "",
-                        "gif": ""
-                    },
-                    "sublist": {
-        
-                        "0": {
-
-                            "name": "Imobiliário",
-                            "sublist": null
-                        },
-
-                        "1": {
-
-                            "name": "Pessoa",
-                            "sublist": null
-                        },
-
-                        "2": {
-
-                            "name": "Zoneamento",
-                            "sublist": {
-                                
-                                "0": {
-
-                                    "name": "CNAE"
-                                },
-
-                                "1": {
-
-                                    "name": "Usos"
-                                },
-
-                                "2": {
-
-                                    "name": "Parâmetros"
-                                },
-                                
-                                "3": {
-
-                                    "name": "Vincular"
-                                },
-
-                                "4": {
-
-                                    "name": "Desvincular"
-                                }
+                        "subList": {
+            
+                            "0": {
+    
+                                "name": "Temáticos",
+                                "subList": null
+                            },
+    
+                            "1": {
+    
+                                "name": "Buffer",
+                                "subList": null
+                            },
+    
+                            "2": {
+    
+                                "name": "Buffer com Raio",
+                                "subList": null
+                            },
+    
+                            "3": {
+    
+                                "name": "Buffer Métrico",
+                                "subList": null
+                            },
+    
+                            "4": {
+    
+                                "name": "Mapa de Calor",
+                                "subList": null
+                            },
+    
+                            "5": {
+    
+                                "name": "Sobrepor mapas",
+                                "subList": null
+                            },
+    
+                            "6": {
+    
+                                "name": "Seleção por gráfico",
+                                "subList": null
+                            },
+    
+                            "7": {
+    
+                                "name": "Seleção por localização",
+                                "subList": null
+                            },
+                            
+                            "8": {
+    
+                                "name": "Menu de inconsistências",
+                                "subList": [
+                                    
+                                    {
+    
+                                        "name": "Inconsistências"
+                                    },
+    
+                                    {
+    
+                                        "name": "Histórico"
+                                    }
+                                ]
                             }
                         }
                     }
-                },
+                ],
 
-                "7":{
+                "Dispositivos Móveis" : [
+
+                    {
         
-                    "name": "Ordens de Serviço",
-                    "icon": "bi bi-ui-checks",
-                    "category-id": 2,            
-                    "toast": {
-        
-                        "name": "",
-                        "description": "",
-                        "gif": ""
-                    },
-                    "sublist": {
-        
-                        "0": {
-
-                            "name": "Criar",
-                            "sublist": null
+                        "name": "Aplicativos Móveis",
+                        "icon": "bi bi-phone",
+                        "categoryId": 3,            
+                        "toast": {
+            
+                            "name": "",
+                            "description": "",
+                            "gif": ""
                         },
-
-                        "1": {
-
-                            "name": "Gerenciar",
-                            "sublist": null
-                        }
-                    }
-                },
-
-                "8":{
-
-                    "name": "Ferramentas de Mapa",
-                    "icon": "bi bi-map",
-                    "category-id": 2,            
-                    "toast": {
-        
-                        "name": "",
-                        "description": "",
-                        "gif": ""
-                    },
-                    "sublist": {
-        
-                        "0": {
-
-                            "name": "Temáticos",
-                            "sublist": null
-                        },
-
-                        "1": {
-
-                            "name": "Buffer",
-                            "sublist": null
-                        },
-
-                        "2": {
-
-                            "name": "Buffer com Raio",
-                            "sublist": null
-                        },
-
-                        "3": {
-
-                            "name": "Buffer Métrico",
-                            "sublist": null
-                        },
-
-                        "4": {
-
-                            "name": "Mapa de Calor",
-                            "sublist": null
-                        },
-
-                        "5": {
-
-                            "name": "Sobrepor mapas",
-                            "sublist": null
-                        },
-
-                        "6": {
-
-                            "name": "Seleção por gráfico",
-                            "sublist": null
-                        },
-
-                        "7": {
-
-                            "name": "Seleção por localização",
-                            "sublist": null
-                        },
-                        
-                        "8": {
-
-                            "name": "Menu de inconsistências",
-                            "sublist": {
-                                
-                                "0": {
-
-                                    "name": "Inconsistências"
-                                },
-
-                                "1": {
-
-                                    "name": "Histórico"
-                                }
+                        "subList": [
+            
+                            {
+    
+                                "name": "Aplicativos",
+                                "subList": null
+                            },
+    
+                            {
+    
+                                "name": "Usuários",
+                                "subList": null
+                            },
+    
+                            {
+    
+                                "name": "Dados",
+                                "subList": null
+                            },
+    
+                            {
+    
+                                "name": "GeoApp",
+                                "subList": null
                             }
-                        }
+                        ]
                     }
-                },
+                ],
 
-                "9":{
+                "Atendimento" : [
+
+                    {
         
-                    "name": "Aplicativos Móveis",
-                    "icon": "bi bi-phone",
-                    "category-id": 3,            
-                    "toast": {
-        
-                        "name": "",
-                        "description": "",
-                        "gif": ""
+                        "name": "Presencial",
+                        "icon": "bi bi-telephone",
+                        "categoryId": 4,            
+                        "toast": {
+            
+                            "name": "",
+                            "description": "",
+                            "gif": ""
+                        },
+                        "subList": [
+            
+                            {
+    
+                                "name": "Realizar",
+                                "subList": null
+                            },
+    
+                            {
+    
+                                "name": "Lateral",
+                                "subList": null
+                            },
+    
+                            {
+    
+                                "name": "Relatório",
+                                "subList": null
+                            }
+                        ]
                     },
-                    "sublist": {
+
+                    {
         
-                        "0": {
-
-                            "name": "Aplicativos",
-                            "sublist": null
+                        "name": "GeoFone",
+                        "icon": "bi bi-headset",
+                        "categoryId": 4,            
+                        "toast": {
+            
+                            "name": "",
+                            "description": "",
+                            "gif": ""
                         },
-
-                        "1": {
-
-                            "name": "Usuários",
-                            "sublist": null
-                        },
-
-                        "2": {
-
-                            "name": "Dados",
-                            "sublist": null
-                        },
-
-                        "3": {
-
-                            "name": "GeoApp",
-                            "sublist": null
-                        }
+                        "subList": [
+            
+                            {
+    
+                                "name": "Nova chamada",
+                                "subList": null
+                            },
+    
+                            {
+    
+                                "name": "Relatório de chamadas",
+                                "subList": null
+                            },
+    
+                            {
+    
+                                "name": "Grupo de categorias",
+                                "subList": null
+                            },
+    
+                            {
+    
+                                "name": "Categorias",
+                                "subList": null
+                            },
+    
+                            {
+    
+                                "name": "Gravações",
+                                "subList": null
+                            },
+    
+                            {
+    
+                                "name": "Equipamentos",
+                                "subList": null
+                            },
+    
+                            {
+    
+                                "name": "Tokens",
+                                "subList": null
+                            },
+    
+                            {
+    
+                                "name": "Ramais",
+                                "subList": null
+                            }
+                        ]
                     }
-                },
+                ],
 
-                "10":{
+                "Outros": [
+
+                    {
         
-                    "name": "Presencial",
-                    "icon": "bi bi-telephone",
-                    "category-id": 4,            
-                    "toast": {
-        
-                        "name": "",
-                        "description": "",
-                        "gif": ""
+                        "name": "Manual de Instruções",
+                        "icon": "bi bi-book",
+                        "categoryId": 5,            
+                        "toast": {
+            
+                            "name": "",
+                            "description": "",
+                            "gif": ""
+                        },
+                        "subList": null
                     },
-                    "sublist": {
+
+                    {
         
-                        "0": {
-
-                            "name": "Realizar",
-                            "sublist": null
+                        "name": "Salvar estado da sessão",
+                        "icon": "bi bi-save",
+                        "categoryId": 5,            
+                        "toast": {
+            
+                            "name": "",
+                            "description": "",
+                            "gif": ""
                         },
-
-                        "1": {
-
-                            "name": "Lateral",
-                            "sublist": null
+                        "subList": null
+                    },
+    
+                    {
+            
+                        "name": "Configurações",
+                        "icon": "bi bi-gear",
+                        "categoryId": 5,            
+                        "toast": {
+            
+                            "name": "",
+                            "description": "",
+                            "gif": ""
                         },
-
-                        "2": {
-
-                            "name": "Relatório",
-                            "sublist": null
-                        }
+                        "subList": null
                     }
-                },
-
-                "11":{
-        
-                    "name": "GeoFone",
-                    "icon": "bi bi-headset",
-                    "category-id": 4,            
-                    "toast": {
-        
-                        "name": "",
-                        "description": "",
-                        "gif": ""
-                    },
-                    "sublist": {
-        
-                        "0": {
-
-                            "name": "Nova chamada",
-                            "sublist": null
-                        },
-
-                        "1": {
-
-                            "name": "Relatório de chamadas",
-                            "sublist": null
-                        },
-
-                        "2": {
-
-                            "name": "Grupo de categorias",
-                            "sublist": null
-                        },
-
-                        "3": {
-
-                            "name": "Categorias",
-                            "sublist": null
-                        },
-
-                        "4": {
-
-                            "name": "Gravações",
-                            "sublist": null
-                        },
-
-                        "5": {
-
-                            "name": "Equipamentos",
-                            "sublist": null
-                        },
-
-                        "6": {
-
-                            "name": "Tokens",
-                            "sublist": null
-                        },
-
-                        "7": {
-
-                            "name": "Ramais",
-                            "sublist": null
-                        }
-                    }
-                },
-
-                "12":{
-        
-                    "name": "Manual de Instruções",
-                    "icon": "bi bi-book",
-                    "category-id": 5,            
-                    "toast": {
-        
-                        "name": "",
-                        "description": "",
-                        "gif": ""
-                    },
-                    "sublist": null
-                },
-
-                "13":{
-        
-                    "name": "Salvar estado da sessão",
-                    "icon": "bi bi-save",
-                    "category-id": 5,            
-                    "toast": {
-        
-                        "name": "",
-                        "description": "",
-                        "gif": ""
-                    },
-                    "sublist": null
-                },
-
-                "14":{
-        
-                    "name": "Configurações",
-                    "icon": "bi bi-gear",
-                    "category-id": 5,            
-                    "toast": {
-        
-                        "name": "",
-                        "description": "",
-                        "gif": ""
-                    },
-                    "sublist": null
-                }
+                ]
             }
         },
 
         "camadas":{
 
+            
         },
 
         "favorites":{

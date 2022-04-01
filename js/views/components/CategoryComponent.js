@@ -45,10 +45,7 @@ class CategoryComponent extends HTMLElement{
 
         this.#categoryComponent = document.createElement('div');
         this.#categoryComponent.classList.add('categoryComponent');
-        this.#categoryComponent.innerHTML = `
-            
-            ${this.#name}
-        `;
+        this.#categoryComponent.innerHTML = `${this.#name}`;
 
         return this.#categoryComponent;
     }

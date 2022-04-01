@@ -4,14 +4,12 @@ class ItemComponent extends HTMLElement{
 
     #icon;
     #title;
-    #hasSublist;
 
-    constructor(icon, title, hasSublist){
+    constructor(icon, title){
         super();
 
         this.#icon = icon;
         this.#title = title;
-        this.#hasSublist = hasSublist;
         this.#render();
     }
 
@@ -77,9 +75,7 @@ class ItemComponent extends HTMLElement{
             <div class="itemComponent__item">
                 <i class="${this.#icon}"></i>  
                 <div class="itemComponent__item__info">
-
                     <span>${this.#title}</span>
-                    ${this.#hasSublist ? '<i class="bi bi-chevron-right"></i>' : ''}
                 </div>
             </div>
                       
