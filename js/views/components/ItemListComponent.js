@@ -17,7 +17,7 @@ class ItemListComponent extends HTMLElement{
 
         const shadow = this.attachShadow({ mode : 'open' });
         shadow.appendChild(this.#html());
-    }
+    };
 
     #html(){
 
@@ -25,7 +25,7 @@ class ItemListComponent extends HTMLElement{
         this.#itemListComponent.classList.add('itemListComponent'); 
 
         return this.#itemListComponent;
-    }
+    };
 
     add(categoryName, items){
 
@@ -39,9 +39,9 @@ class ItemListComponent extends HTMLElement{
             this.#itemListComponent.appendChild(
                                 
                 this.#itemComponent = new ItemComponent(item.icon, item.name)
-            )
-        })
-    }
+            );
+        });
+    };
 }
 
 customElements.define('itemlist-component', ItemListComponent);

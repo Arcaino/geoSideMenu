@@ -5,6 +5,7 @@ import ItemListComponent from '../components/ItemListComponent.js';
 import SearchComponent from '../components/SearchComponent.js';
 import ToggleComponent from '../components/ToggleComponent.js';
 import UserComponent from '../components/UserComponent.js';
+import menuItems from '../../menuItems.js';
 
 class SideMenu extends HTMLElement{
 
@@ -12,25 +13,21 @@ class SideMenu extends HTMLElement{
     #sideMenu;
     #userComponent;
     #searchComponent;
-    #toggleComponent;    
-    #sideMenuController;
+    #toggleComponent;
     #itemListComponent;
 
     constructor(){
         super();
-
-        this.#sideMenuController = new SideMenuController();
-        this.#sideMenuController.getAllCategories().then(() => { 
-            this.#render();
-        });        
+        
+        this.#render();
     }
 
     #render(){
 
         const shadow = this.attachShadow({ mode: 'open' });
         shadow.appendChild(this.#style());
-        shadow.appendChild(this.#html(this.#sideMenuController));   
-        this.#collapseOrExpandSideMenu();     
+        shadow.appendChild(this.#html());   
+        this.#collapseOrExpandSideMenu();  
     }
 
     #style(){
@@ -59,7 +56,7 @@ class SideMenu extends HTMLElement{
         return style;
     }
 
-    #html(items){
+    #html(){
 
         this.#sideMenu = document.createElement('div');
         this.#sideMenu.classList.add('sideMenu');
@@ -72,7 +69,7 @@ class SideMenu extends HTMLElement{
             this.#toggleComponent = new ToggleComponent(),
             this.#itemListComponent = new ItemListComponent(),
             
-            Object.entries(items.categories).forEach(item => {
+            Object.entries(menuItems.menu.categories).forEach(item => {
 
                 this.#itemListComponent.add(item[0], item[1])
             })

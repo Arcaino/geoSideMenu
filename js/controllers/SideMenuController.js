@@ -23,20 +23,6 @@ class SideMenuController{
             item.toast
         )
     }
-
-    async getAllCategories(){
-
-        try{            
-
-            let menu = await this.#getMenu.getItemList();
-
-            this.categories = menu.lists.menu.categories; 
-        }
-        catch(error){
-
-            console.log(error);
-        }
-    }
 }
 
 export default SideMenuController;
