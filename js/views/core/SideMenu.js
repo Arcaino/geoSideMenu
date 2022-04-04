@@ -68,12 +68,12 @@ class SideMenu extends HTMLElement{
             this.#searchComponent = new SearchComponent(),
             this.#toggleComponent = new ToggleComponent(),
             this.#itemListComponent = new ItemListComponent(),
-            
-            Object.entries(menuItems.menu.categories).forEach(item => {
-
-                this.#itemListComponent.add(item[0], item[1])
-            })
         );
+
+        Object.entries(menuItems.menu.categories).forEach(item => {
+                
+            this.#itemListComponent.add(item[0], item[1])
+        });
 
         return this.#sideMenu;
     }
