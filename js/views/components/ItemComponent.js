@@ -4,6 +4,7 @@ class ItemComponent extends HTMLElement{
 
     #icon;
     #title;
+    #itemElements;
 
     constructor(icon, title){
         super();
@@ -53,6 +54,7 @@ class ItemComponent extends HTMLElement{
                 font-weight: 500;
                 font-size: 1rem;
                 line-height: 18px;
+                white-space: nowrap;
             }
 
             .itemComponent__item__info{
@@ -60,6 +62,16 @@ class ItemComponent extends HTMLElement{
                 width: 100%;
                 display: flex;
                 justify-content: space-between;
+            }
+
+            .itemComponent__item__info span{
+
+                transition: opacity .2s;
+            }
+
+            .itemComponent__item i{
+
+                transition: transform .3s;
             }
         `;
 
@@ -81,7 +93,39 @@ class ItemComponent extends HTMLElement{
                       
         `;
 
+        this.#itemElements = {
+
+            icon: itemComponent.querySelectorAll('.itemComponent__item i'),
+            title: itemComponent.querySelectorAll('.itemComponent__item__info span')
+        }
+
         return itemComponent;
+    }
+
+    collapse(){
+
+        this.#itemElements.title.forEach(element => {
+           
+            element.style.opacity = 0;
+        });
+
+        this.#itemElements.icon.forEach(element => {
+           
+            element.style.transform = "translate(150%, 0)";
+        });
+    }
+
+    expand(){
+
+        this.#itemElements.title.forEach(element => {
+
+            element.removeAttribute("style");
+        });    
+        
+        this.#itemElements.icon.forEach(element => {
+
+            element.removeAttribute("style");
+        });        
     }
 }
 

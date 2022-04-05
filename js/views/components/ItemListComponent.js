@@ -34,6 +34,7 @@ class ItemListComponent extends HTMLElement{
                 width: calc(100% + 1rem);
                 color: #00000000;
                 transition: color .5s;
+                overflow-x: hidden;
             }
 
             .itemListComponent::-webkit-scrollbar-thumb{
@@ -57,19 +58,6 @@ class ItemListComponent extends HTMLElement{
                 
                 margin-top: 2rem;
             }
-
-            .fade{
-                height: 40px;
-                width: 17rem;
-                transform: translate(0%, 0%);
-                transition: .5s;
-                left: 0;
-                overflow: auto;
-                position: absolute;
-                background-color: ${themeColors.primaryColor};
-                -webkit-mask-image: -webkit-gradient(linear, left 10%, left bottom, from(black), to(rgba(0, 0, 0, 0)));
-                z-index: 9;
-            }
         `;
 
         return style;
@@ -79,10 +67,6 @@ class ItemListComponent extends HTMLElement{
 
         this.#itemListComponent = document.createElement('div');
         this.#itemListComponent.classList.add('itemListComponent'); 
-        this.#itemListComponent.innerHTML = `
-        
-            <span class="fade"></span>
-        `;
 
         return this.#itemListComponent;
     };
@@ -102,6 +86,22 @@ class ItemListComponent extends HTMLElement{
             );
         });
     };
+
+    collapse(){
+
+        this.#itemListComponent.childNodes.forEach(component => {
+        
+            component.collapse();
+        });
+    }
+
+    expand(){
+
+        this.#itemListComponent.childNodes.forEach(component => {
+        
+            component.expand();
+        });
+    }
 }
 
 customElements.define('itemlist-component', ItemListComponent);

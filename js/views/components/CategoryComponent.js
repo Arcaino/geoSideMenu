@@ -51,9 +51,11 @@ class CategoryComponent extends HTMLElement{
     }
 
     collapse(){
-        
+
         this.#categoryComponent.style.fontSize = "9px";
         this.#categoryComponent.style.fontWeight = "600";
+        this.#categoryComponent.style.textAlign = "center";
+        this.#categoryComponent.style.transform = "translate(-0.25rem, 0)";
     }
 
     expand(){
