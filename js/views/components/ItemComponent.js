@@ -63,9 +63,9 @@ class ItemComponent extends HTMLElement{
             .itemComponent__menu__submenu{
                 
                 max-height: 0rem;
-                margin: 0;
+                margin: 0 !important;
                 overflow: hidden;             
-                margin-left: 2rem;   
+                margin-left: 2rem !important;   
                 transition: max-height .2s;
             }
 
@@ -108,10 +108,16 @@ class ItemComponent extends HTMLElement{
                 transition: transform .3s;
             }
 
+            .itemComponent__menu__submenu__submenu{
+
+                display: flex;
+                justify-content: space-between;
+            }
+
             .opened-submenu{
 
                 transition: max-height .5s;
-                max-height: 20rem;                
+                max-height: 50rem;                
             }
         `;
 
@@ -145,11 +151,25 @@ class ItemComponent extends HTMLElement{
             ${this.#subList ? 
                     
                 `<div class="itemComponent__menu__submenu">
-                    ${this.#subList.map(item => 
+                    ${this.#subList.map(item =>  
                         
-                        `<div>${item.name}</div>`
+                        item.subList ? 
+                        `<div class="itemComponent__menu__submenu__submenu itemComponent__item">
+                            <div>${item.name}</div> 
+                            <i class="bi bi-chevron-right itemComponent__menu"></i> 
+                        </div>
+                        <div class="itemComponent__menu__submenu__sublist itemComponent__menu__submenu">
+                            ${item.subList.map(item => 
+
+                                `<div>${item.name}</div>`
+                            ).join('')}
+                        </div>
+                        `
+                        :
+                        `<div>${item.name}</div>`                        
                     ).join('')}
-                </div>` 
+                </div>
+                `                 
                 : 
                 ''
             }
