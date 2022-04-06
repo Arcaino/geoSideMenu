@@ -5,21 +5,26 @@ class ItemComponent extends HTMLElement{
     #icon;
     #title;
     #itemElements;
+    #subList;
+    #sideMenuIsCollapsed;
 
-    constructor(icon, title){
+    constructor(icon, title, sublist){
         super();
 
         this.#icon = icon;
         this.#title = title;
+        this.#subList = sublist;
         this.#render();
-    }
+        this.#openSubmenu();
+        this.#sideMenuIsCollapsed = false;
+    };
 
     #render(){
 
         const shadow = this.attachShadow({ mode : 'open' });
         shadow.appendChild(this.#style());
         shadow.appendChild(this.#html());
-    }
+    };
 
     #style(){
 
@@ -32,21 +37,44 @@ class ItemComponent extends HTMLElement{
             .itemComponent{
 
                 margin: 1rem 0;
+                cursor: pointer;
+                user-select: none;
             }
 
             .itemComponent > * {
                 
-                display: flex;
                 color: ${themeColors.itemColor};
                 font-family: 'Roboto', sans-serif;
+                user-select: none;
             }
 
             .itemComponent__item{
 
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .itemComponent__info__item{
+
+                display: flex;
                 cursor: pointer;
             }
 
-            .itemComponent__item span{
+            .itemComponent__menu__submenu{
+                
+                max-height: 0rem;
+                margin: 0;
+                overflow: hidden;             
+                margin-left: 2rem;   
+                transition: max-height .2s;
+            }
+
+            .itemComponent__menu__submenu > * {
+
+                margin: 1rem 0;
+            }
+
+            .itemComponent__info__item span{
 
                 margin-left: .5rem;
                 font-family: 'Poppins', sans-serif;
@@ -57,26 +85,38 @@ class ItemComponent extends HTMLElement{
                 white-space: nowrap;
             }
 
-            .itemComponent__item__info{
+            .itemComponent__info__item__title{
 
                 width: 100%;
                 display: flex;
                 justify-content: space-between;
             }
 
-            .itemComponent__item__info span{
+            .itemComponent__menu{
+
+                overflow: hidden;
+                transition: transform .5s;  
+            }
+
+            .itemComponent__info__item__title span{
 
                 transition: opacity .2s;
             }
 
-            .itemComponent__item i{
+            .itemComponent__info__item i{
 
                 transition: transform .3s;
+            }
+
+            .opened-submenu{
+
+                transition: max-height .5s;
+                max-height: 20rem;                
             }
         `;
 
         return style;
-    }
+    };
 
     #html(){
 
@@ -85,22 +125,47 @@ class ItemComponent extends HTMLElement{
         itemComponent.innerHTML = `
 
             <div class="itemComponent__item">
-                <i class="${this.#icon}"></i>  
-                <div class="itemComponent__item__info">
-                    <span>${this.#title}</span>
+                <div class="itemComponent__info__item">
+                    <i class="${this.#icon}"></i>  
+                    <div class="itemComponent__info__item__title">
+                        <span>${this.#title}</span>
+                    </div>                
+                </div>
+
+                <div class="itemComponent__menu">
+                    ${this.#subList ? 
+
+                        `<i class="bi bi-chevron-right"></i>` 
+                        : 
+                        ''
+                    }
                 </div>
             </div>
-                      
+
+            ${this.#subList ? 
+                    
+                `<div class="itemComponent__menu__submenu">
+                    ${this.#subList.map(item => 
+                        
+                        `<div>${item.name}</div>`
+                    ).join('')}
+                </div>` 
+                : 
+                ''
+            }
         `;
 
         this.#itemElements = {
 
+            item: itemComponent.querySelectorAll('.itemComponent__item'),
+            iconParent: itemComponent.querySelectorAll('.itemComponent__menu'),
             icon: itemComponent.querySelectorAll('.itemComponent__item i'),
-            title: itemComponent.querySelectorAll('.itemComponent__item__info span')
-        }
+            title: itemComponent.querySelectorAll('.itemComponent__info__item__title span'),
+            subMenu: itemComponent.querySelectorAll('.itemComponent__menu__submenu')
+        };
 
         return itemComponent;
-    }
+    };
 
     collapse(){
 
@@ -113,7 +178,20 @@ class ItemComponent extends HTMLElement{
            
             element.style.transform = "translate(150%, 0)";
         });
-    }
+        
+        this.#itemElements.subMenu.forEach(element => {
+
+            element.classList.remove("opened-submenu");
+        });
+
+        this.#itemElements.iconParent.forEach(element => {
+
+            element.style.transition = "rotate .3s";
+            element.style.transform = "rotate(0deg)";
+        });
+
+        this.#sideMenuIsCollapsed = true;
+    };
 
     expand(){
 
@@ -126,6 +204,29 @@ class ItemComponent extends HTMLElement{
 
             element.removeAttribute("style");
         });        
+
+        this.#sideMenuIsCollapsed = false;
+    };
+
+    #openSubmenu(){
+
+            this.#itemElements.item.forEach(element => {
+           
+                element.addEventListener("click", () => {
+
+                    if(!this.#sideMenuIsCollapsed){
+    
+                        element.nextElementSibling.classList.toggle("opened-submenu");
+                        if(element.nextElementSibling.classList.contains("opened-submenu")){
+        
+                            element.firstChild.parentNode.children[1].style.transform = "rotate(90deg)";
+                        }else{
+        
+                            element.firstChild.parentNode.children[1].removeAttribute("style");
+                        }
+                    }
+                });
+            });
     }
 }
 

@@ -81,8 +81,8 @@ class ItemListComponent extends HTMLElement{
         items.forEach(item => {
 
             this.#itemListComponent.appendChild(
-                                
-                this.#itemComponent = new ItemComponent(item.icon, item.name),
+                                                
+                this.#itemComponent = new ItemComponent(item.icon, item.name, item.subList),
             );
         });
     };
