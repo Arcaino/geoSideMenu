@@ -1,4 +1,5 @@
 import themeColors from "../../utils/themeColors.js";
+import Toast from "../shared/Toast.js";
 
 class ItemComponent extends HTMLElement{
 
@@ -7,15 +8,20 @@ class ItemComponent extends HTMLElement{
     #itemElements;
     #subList;
     #sideMenuIsCollapsed;
+    #toast;
+    #toastContent;
+    #itemComponent;
 
-    constructor(icon, title, sublist){
+    constructor(icon, title, sublist, toast){
         super();
 
         this.#icon = icon;
         this.#title = title;
         this.#subList = sublist;
+        this.#toastContent = toast;
         this.#render();
         this.#openSubmenu();
+        this.#showToast();
         this.#sideMenuIsCollapsed = false;
     };
 
@@ -126,9 +132,9 @@ class ItemComponent extends HTMLElement{
 
     #html(){
 
-        const itemComponent = document.createElement('div');
-        itemComponent.classList.add('itemComponent');
-        itemComponent.innerHTML = `
+        this.#itemComponent = document.createElement('div');
+        this.#itemComponent.classList.add('itemComponent');
+        this.#itemComponent.innerHTML = `
 
             <div class="itemComponent__item">
                 <div class="itemComponent__info__item">
@@ -177,14 +183,32 @@ class ItemComponent extends HTMLElement{
 
         this.#itemElements = {
 
-            item: itemComponent.querySelectorAll('.itemComponent__item'),
-            iconParent: itemComponent.querySelectorAll('.itemComponent__menu'),
-            icon: itemComponent.querySelectorAll('.itemComponent__item i'),
-            title: itemComponent.querySelectorAll('.itemComponent__info__item__title span'),
-            subMenu: itemComponent.querySelectorAll('.itemComponent__menu__submenu')
+            item: this.#itemComponent.querySelectorAll('.itemComponent__item'),
+            iconParent: this.#itemComponent.querySelectorAll('.itemComponent__menu'),
+            icon: this.#itemComponent.querySelectorAll('.itemComponent__item i'),
+            title: this.#itemComponent.querySelectorAll('.itemComponent__info__item__title span'),
+            subMenu: this.#itemComponent.querySelectorAll('.itemComponent__menu__submenu')
         };
 
-        return itemComponent;
+        return this.#itemComponent;
+    };
+
+    #showToast(){
+
+        this.#itemElements.item.forEach(item => {
+
+            item.addEventListener("mouseenter", () => {
+
+                if(this.#toastContent.gif && this.#toastContent.description)
+                    this.#itemComponent.prepend(this.#toast = new Toast(this.#toastContent, this.#itemElements.item));
+            });
+
+            item.addEventListener("mouseleave", () => {
+
+                if(this.#toastContent.gif && this.#toastContent.description)
+                    this.#itemComponent.removeChild(this.#toast);
+            });
+        });        
     };
 
     collapse(){
@@ -230,23 +254,23 @@ class ItemComponent extends HTMLElement{
 
     #openSubmenu(){
 
-            this.#itemElements.item.forEach(element => {
-           
-                element.addEventListener("click", () => {
+        this.#itemElements.item.forEach(element => {
+        
+            element.addEventListener("click", () => {
 
-                    if(!this.#sideMenuIsCollapsed){
+                if(!this.#sideMenuIsCollapsed){
+
+                    element.nextElementSibling.classList.toggle("opened-submenu");
+                    if(element.nextElementSibling.classList.contains("opened-submenu")){
     
-                        element.nextElementSibling.classList.toggle("opened-submenu");
-                        if(element.nextElementSibling.classList.contains("opened-submenu")){
-        
-                            element.firstChild.parentNode.children[1].style.transform = "rotate(90deg)";
-                        }else{
-        
-                            element.firstChild.parentNode.children[1].removeAttribute("style");
-                        }
+                        element.firstChild.parentNode.children[1].style.transform = "rotate(90deg)";
+                    }else{
+    
+                        element.firstChild.parentNode.children[1].removeAttribute("style");
                     }
-                });
+                }
             });
+        });
     }
 }
 

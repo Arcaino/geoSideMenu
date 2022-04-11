@@ -33,7 +33,7 @@ class CategoryComponent extends HTMLElement{
                 font-style: normal;
                 font-size: 13px;
                 line-height: 18px;
-                margin: 1rem 0;
+                margin-bottom: 1rem;
                 transition: all .5s;
             }
         `;

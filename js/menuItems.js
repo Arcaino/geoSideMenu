@@ -10,9 +10,8 @@ const menuItems = {
                     icon: "bi bi-folder2",           
                     toast: {
         
-                        name: "",
-                        description: "",
-                        gif: ""
+                        description: "Acesse e gerencie documentos do sistema.",
+                        gif: "https://cdn.lordicon.com/kpsnbsyj.json"
                     },
                     subList: [
 
@@ -39,9 +38,8 @@ const menuItems = {
                     icon: "bi bi-file-earmark-text",         
                     toast: {
         
-                        name: "",
-                        description: "",
-                        gif: ""
+                        description: "Acesse e gerencie certidões e relatórios do sistema.",
+                        gif: "https://cdn.lordicon.com/biwxmlnf.json"
                     },
                     subList: [
         
@@ -71,9 +69,8 @@ const menuItems = {
                     icon: "bi bi-card-checklist",         
                     toast: {
         
-                        name: "",
-                        description: "",
-                        gif: ""
+                        description: "Acesse e gerencie as consultas de viabiliade do sistema.",
+                        gif: "https://cdn.lordicon.com/aslgozpd.json"
                     },
                     subList: [
         
@@ -118,9 +115,8 @@ const menuItems = {
                     icon: "bi bi-bar-chart",         
                     toast: {
         
-                        name: "",
-                        description: "",
-                        gif: ""
+                        description: "Acesse e gerencie as estatisticas do sistema.",
+                        gif: "https://cdn.lordicon.com/osqwjgzg.json"
                     },
                     subList: [
         
@@ -144,9 +140,8 @@ const menuItems = {
                     icon: "bi bi-grid-1x2",         
                     toast: {
         
-                        name: "",
-                        description: "",
-                        gif: ""
+                        description: "Visualize as informações territoríais do sistema.",
+                        gif: "https://cdn.lordicon.com/xulniijg.json"
                     },
                     subList: null
                 },
@@ -157,9 +152,8 @@ const menuItems = {
                     icon: "bi bi-pencil-square",     
                     toast: {
         
-                        name: "",
-                        description: "",
-                        gif: ""
+                        description: "Gerencie as tabelas presentess no sistema.",
+                        gif: "https://cdn.lordicon.com/oclwxpmm.json"
                     },
                     subList: [
         
@@ -183,9 +177,8 @@ const menuItems = {
                     icon: "bi bi-file-earmark-plus",         
                     toast: {
         
-                        name: "",
-                        description: "",
-                        gif: ""
+                        description: "Acesse e manipule os cadastros.",
+                        gif: "https://cdn.lordicon.com/auvicynv.json"
                     },
                     subList: [
         
@@ -241,9 +234,8 @@ const menuItems = {
                     icon: "bi bi-ui-checks",         
                     toast: {
         
-                        name: "",
-                        description: "",
-                        gif: ""
+                        description: "Acesse e gerencie as ordens de serviço do sistema.",
+                        gif: "https://cdn.lordicon.com/vmibgbhr.json"
                     },
                     subList: [
         
@@ -267,9 +259,8 @@ const menuItems = {
                     icon: "bi bi-map",         
                     toast: {
         
-                        name: "",
-                        description: "",
-                        gif: ""
+                        description: "Acesse e gerencie as ferramentas de mapa do sistema.",
+                        gif: "https://cdn.lordicon.com/ofqzcdla.json"
                     },
                     subList: [
         
@@ -349,9 +340,8 @@ const menuItems = {
                     icon: "bi bi-phone",           
                     toast: {
         
-                        name: "",
-                        description: "",
-                        gif: ""
+                        description: "Acesse e gerencie as ferramentas de dispositivos móveis.",
+                        gif: "https://cdn.lordicon.com/sukojcry.json"
                     },
                     subList: [
         
@@ -390,9 +380,8 @@ const menuItems = {
                     icon: "bi bi-telephone",       
                     toast: {
         
-                        name: "",
-                        description: "",
-                        gif: ""
+                        description: "Acesse e gerencie as ferramentas de mapa do sistema.",
+                        gif: "https://cdn.lordicon.com/rqskgpey.json"
                     },
                     subList: [
         
@@ -422,9 +411,8 @@ const menuItems = {
                     icon: "bi bi-headset",        
                     toast: {
         
-                        name: "",
-                        description: "",
-                        gif: ""
+                        description: "Registre chamadas, obtenha os relatórios e cheque os ramais.",
+                        gif: "https://cdn.lordicon.com/cnyeuzxc.json"
                     },
                     subList: [
         
@@ -487,9 +475,8 @@ const menuItems = {
                     icon: "bi bi-book",          
                     toast: {
         
-                        name: "",
-                        description: "",
-                        gif: ""
+                        description: "Clique e faça download do manual de instruções do sistema.",
+                        gif: "https://cdn.lordicon.com/stxtcyyo.json"
                     },
                     subList: null
                 },
@@ -500,9 +487,8 @@ const menuItems = {
                     icon: "bi bi-save",         
                     toast: {
         
-                        name: "",
-                        description: "",
-                        gif: ""
+                        description: "Salve o estado atual da sessão, para facilitar os próximos acessos",
+                        gif: "https://cdn.lordicon.com/sihdhmit.json"
                     },
                     subList: null
                 },
@@ -513,9 +499,8 @@ const menuItems = {
                     icon: "bi bi-gear",           
                     toast: {
         
-                        name: "",
-                        description: "",
-                        gif: ""
+                        description: "Acesse as configurações do sistema.",
+                        gif: "https://cdn.lordicon.com/ryyjawhw.json"
                     },
                     subList: null
                 }

@@ -82,7 +82,7 @@ class ItemListComponent extends HTMLElement{
 
             this.#itemListComponent.appendChild(
                                                 
-                this.#itemComponent = new ItemComponent(item.icon, item.name, item.subList),
+                this.#itemComponent = new ItemComponent(item.icon, item.name, item.subList, item.toast),
             );
         });
     };
@@ -93,7 +93,7 @@ class ItemListComponent extends HTMLElement{
         
             component.collapse();
         });
-    }
+    };
 
     expand(){
 
@@ -101,7 +101,7 @@ class ItemListComponent extends HTMLElement{
         
             component.expand();
         });
-    }
+    };
 }
 
 customElements.define('itemlist-component', ItemListComponent);
