@@ -52,7 +52,7 @@ class Toast extends HTMLElement{
                 left: calc(${CheckMenuState.getSideMenuWidth()}px + 1rem);
                 text-align: center;
                 width: 10rem;
-                background-color: ${themeColors.primaryColor};
+                background-color: ${themeColors.noteColor};
                 padding: 1rem;
                 border-radius: .5rem;
                 ${!CheckMenuState.checkIfTheMenuIsCompressed() ? `
@@ -63,7 +63,7 @@ class Toast extends HTMLElement{
 
             .toast:before{
                 content: "";
-                background-color: ${themeColors.primaryColor};
+                background-color: ${themeColors.noteColor};
                 width: 1rem;
                 height: 1rem;
                 top: ${this.#item[0].getBoundingClientRect().top}px;
@@ -78,7 +78,7 @@ class Toast extends HTMLElement{
                 font-weight: bold;
                 font-size: 14px;
                 font-family: 'Roboto', sans-serif;
-                color: #000;
+                color: ${themeColors.primaryColor};
             }
 
             @keyframes opacity {
@@ -105,7 +105,7 @@ class Toast extends HTMLElement{
             <lord-icon
                 src="${this.#content.gif}"
                 trigger="loop"
-                colors="primary:${themeColors.secundaryColor}"
+                colors="primary:${themeColors.primaryColor}"
                 style="width:50px;height:50px">
                 </lord-icon>
             <div class="toast__description">${this.#content.description}</div>
