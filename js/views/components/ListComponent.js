@@ -50,7 +50,7 @@ class ListComponent extends HTMLElement{
         this.#itemListComponent.updateItemList(menuItems.menu.categories);
 
         return this.#listComponent;
-    }
+    };
 
     #changeList(){
 
@@ -59,7 +59,6 @@ class ListComponent extends HTMLElement{
         this.#toggleComponent.toggleElements.buttons.forEach(item => {
 
             item.addEventListener("click", () => {
-
 
                 Object.entries(menuItems).forEach(selected => {
 
@@ -86,8 +85,8 @@ class ListComponent extends HTMLElement{
         
             component.expand();
         });
-    }
-}
+    };
+};
 
 customElements.define('list-component', ListComponent);
 

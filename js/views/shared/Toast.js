@@ -47,7 +47,7 @@ class Toast extends HTMLElement{
         
             .toast{
 
-                position: absolute;
+                position: fixed;
                 top: ${this.#defineToastTopPosition()}vh;
                 left: calc(${CheckMenuState.getSideMenuWidth()}px + 1rem);
                 text-align: center;
@@ -127,6 +127,7 @@ class Toast extends HTMLElement{
     #defineToastTopPosition(){
 
         let initialPosition = this.#item[0].getBoundingClientRect().top - this.#item[0].offsetHeight; 
+
         let heightInVh = MeasurementConverter.pixelToVh(initialPosition);
 
         if(!CheckMenuState.checkIfTheMenuIsCompressed()){
@@ -135,7 +136,7 @@ class Toast extends HTMLElement{
                 heightInVh = heightInVh - 10;
             else if(heightInVh > 90)
                 heightInVh = heightInVh - 7;
-        }
+        };
 
         return heightInVh;
     }
