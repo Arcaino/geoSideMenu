@@ -35,6 +35,13 @@ class CategoryComponent extends HTMLElement{
                 line-height: 18px;
                 margin-bottom: 1rem;
                 transition: all .5s;
+                animation-name: opacity;
+                animation-duration: .7s;
+            }
+
+            @keyframes opacity {
+                0%   {opacity: 0;}
+                100% {opacity: 1;}
             }
         `;
 

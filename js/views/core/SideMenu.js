@@ -5,7 +5,7 @@ import ItemListComponent from '../components/ItemListComponent.js';
 import SearchComponent from '../components/SearchComponent.js';
 import ToggleComponent from '../components/ToggleComponent.js';
 import UserComponent from '../components/UserComponent.js';
-import menuItems from '../../menuItems.js';
+import ListComponent from '../components/ListComponent.js';
 
 class SideMenu extends HTMLElement{
 
@@ -15,6 +15,7 @@ class SideMenu extends HTMLElement{
     #searchComponent;
     #toggleComponent;
     #itemListComponent;
+    #listComponent;
 
     constructor(){
         super();
@@ -66,14 +67,8 @@ class SideMenu extends HTMLElement{
             this.#headerComponent = new HeaderComponent(),
             this.#userComponent = new UserComponent(),
             this.#searchComponent = new SearchComponent(),
-            this.#toggleComponent = new ToggleComponent(),
-            this.#itemListComponent = new ItemListComponent(),
+            this.#listComponent = new ListComponent()
         );
-
-        Object.entries(menuItems.menu.categories).forEach(item => {
-                
-            this.#itemListComponent.add(item[0], item[1])
-        });
 
         return this.#sideMenu;
     }

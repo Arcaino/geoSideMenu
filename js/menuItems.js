@@ -510,6 +510,24 @@ const menuItems = {
 
     camadas: {
 
+        categories: {
+
+            "Configurações": [
+
+                {
+
+                    name: "Gerenciar camadas",
+                    icon: "bi bi-layers",
+                    toast: {
+        
+                        description: "Clique e faça download do manual de instruções do sistema.",
+                        gif: "https://cdn.lordicon.com/stxtcyyo.json"
+                    },
+                    subList: null
+                }
+            ]
+
+        }
     },
 
     favoritos: {

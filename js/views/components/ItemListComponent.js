@@ -1,3 +1,4 @@
+import CheckMenuState from '../../utils/CheckMenuState.js';
 import themeColors from '../../utils/themeColors.js';
 import CategoryComponent from '../components/CategoryComponent.js';
 import ItemComponent from './ItemComponent.js';
@@ -71,7 +72,7 @@ class ItemListComponent extends HTMLElement{
         return this.#itemListComponent;
     };
 
-    add(categoryName, items){
+    #add(categoryName, items){        
 
         this.#itemListComponent.appendChild(
 
@@ -85,6 +86,30 @@ class ItemListComponent extends HTMLElement{
                 this.#itemComponent = new ItemComponent(item.icon, item.name, item.subList, item.toast),
             );
         });
+    };
+
+    #remove(){
+
+        while (this.#itemListComponent.firstChild) {
+
+            this.#itemListComponent.removeChild(this.#itemListComponent.firstChild);
+        }
+    }
+
+    updateItemList(list){
+
+        if(this.#itemListComponent.childNodes.length > 0){
+
+            this.#remove();
+        }
+
+        if(list){
+
+            Object.entries(list).forEach(item => 
+                
+                this.#add(item[0], item[1])
+            );
+        }
     };
 
     collapse(){

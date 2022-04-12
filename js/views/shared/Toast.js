@@ -81,6 +81,14 @@ class Toast extends HTMLElement{
                 color: ${themeColors.primaryColor};
             }
 
+            .toast__item-name{
+
+                color: ${themeColors.primaryColor};
+                font-weight: bold;
+                font-size: 14px;
+                font-family: 'Roboto', sans-serif;
+            }
+
             @keyframes opacity {
                 0%   {opacity: 0;}
                 100% {opacity: 1;}

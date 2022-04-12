@@ -45,6 +45,8 @@ class ItemComponent extends HTMLElement{
                 margin: 1rem 0;
                 cursor: pointer;
                 user-select: none;
+                animation-name: opacity;
+                animation-duration: .7s;
             }
 
             .itemComponent > * {
@@ -124,6 +126,11 @@ class ItemComponent extends HTMLElement{
 
                 transition: max-height .5s;
                 max-height: 50rem;                
+            }
+
+            @keyframes opacity {
+                0%   {opacity: 0;}
+                100% {opacity: 1;}
             }
         `;
 
