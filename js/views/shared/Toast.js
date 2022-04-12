@@ -127,7 +127,6 @@ class Toast extends HTMLElement{
     #defineToastTopPosition(){
 
         let initialPosition = this.#item[0].getBoundingClientRect().top - this.#item[0].offsetHeight; 
-
         let heightInVh = MeasurementConverter.pixelToVh(initialPosition);
 
         if(!CheckMenuState.checkIfTheMenuIsCompressed()){

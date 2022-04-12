@@ -1,4 +1,4 @@
-import themeColors from "../../utils/themeColors.js";
+import themeColors from "../../../utils/themeColors.js";
 
 class ToggleComponent extends HTMLElement{
 

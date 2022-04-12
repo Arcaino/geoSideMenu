@@ -1,6 +1,6 @@
 import ItemListComponent from "./ItemListComponent.js";
 import ToggleComponent from "./ToggleComponent.js";
-import menuItems from '../../menuItems.js';
+import menuItems from '../../../menuItems.js';
 
 class ListComponent extends HTMLElement{
     

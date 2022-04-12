@@ -1,5 +1,5 @@
-import themeColors from "../../utils/themeColors.js";
-import Toast from "../shared/Toast.js";
+import themeColors from "../../../utils/themeColors.js";
+import Toast from "../../shared/Toast.js";
 
 class ItemComponent extends HTMLElement{
 
