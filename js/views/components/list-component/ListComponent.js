@@ -1,5 +1,5 @@
-import ItemListComponent from "./ItemListComponent.js";
-import ToggleComponent from "./ToggleComponent.js";
+import ItemListComponent from "./items-components/ItemListComponent.js";
+import ToggleComponent from "./items-components/ToggleComponent.js";
 import menuItems from '../../../menuItems.js';
 
 class ListComponent extends HTMLElement{
@@ -54,22 +54,25 @@ class ListComponent extends HTMLElement{
 
     #changeList(){
 
-        this.#toggleComponent.selectTab();
-        
-        this.#toggleComponent.toggleElements.buttons.forEach(item => {
+        this.#toggleComponent.toggleElements.buttons.forEach(item => {            
 
-            item.addEventListener("click", () => {
+            item.addEventListener("click", () => {                
 
-                Object.entries(menuItems).forEach(selected => {
+                if(!item.classList.contains('active-tab')){
 
-                    if(selected[0] === item.id){
+                    this.#toggleComponent.selectTab(item);
 
-                        this.#itemListComponent.updateItemList(selected[1].categories);
-                    }
-                });                
+                    Object.entries(menuItems).forEach(selected => {
+    
+                        if(selected[0] === item.id){
+    
+                            this.#itemListComponent.updateItemList(selected[1].categories);
+                        }
+                    });  
+                };              
             });
         });
-    }
+    };
 
     collapse(){
 

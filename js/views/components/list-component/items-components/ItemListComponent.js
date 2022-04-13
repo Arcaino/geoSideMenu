@@ -1,5 +1,5 @@
-import CheckMenuState from '../../../utils/CheckMenuState.js';
-import themeColors from '../../../utils/themeColors.js';
+import CheckMenuState from '../../../../utils/CheckMenuState.js';
+import themeColors from '../../../../utils/themeColors.js';
 import CategoryComponent from './CategoryComponent.js';
 import ItemComponent from './ItemComponent.js';
 

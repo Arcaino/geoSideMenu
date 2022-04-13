@@ -1,4 +1,4 @@
-import themeColors from "../../../utils/themeColors.js";
+import themeColors from "../../../../utils/themeColors.js";
 
 class ToggleComponent extends HTMLElement{
 
@@ -176,18 +176,12 @@ class ToggleComponent extends HTMLElement{
         });
     }
 
-    selectTab(){
+    selectTab(item){
 
-        this.toggleElements.buttons.forEach(item => {
-
-            item.addEventListener("click", () => {
-
-                this.#removeButtonSelection();
-                item.classList.add("active-tab");
-                this.#defineSelectedAndNonSelectedButtons();
-                this.#setStyleOfButtonsOnHoverWhenSideMenuIsCollapsed();
-            });
-        });
+        this.#removeButtonSelection();
+        item.classList.add("active-tab");
+        this.#defineSelectedAndNonSelectedButtons();
+        this.#setStyleOfButtonsOnHoverWhenSideMenuIsCollapsed();
     }
 
     #removeButtonSelection(){
