@@ -61,17 +61,21 @@ class ListComponent extends HTMLElement{
                 if(!item.classList.contains('active-tab')){
 
                     this.#toggleComponent.selectTab(item);
-
-                    Object.entries(menuItems).forEach(selected => {
-    
-                        if(selected[0] === item.id){
-    
-                            this.#itemListComponent.updateItemList(selected[1].categories);
-                        }
-                    });  
+                    this.#renderList(item);
                 };              
             });
         });
+    };
+
+    #renderList(item){
+
+        Object.entries(menuItems).forEach(selected => {
+    
+            if(selected[0] === item.id){
+
+                this.#itemListComponent.updateItemList(selected[1].categories);
+            };
+        });  
     };
 
     collapse(){
